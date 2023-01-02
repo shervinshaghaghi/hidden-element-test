@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  user-select: none;
+  scroll-behavior: smooth;
+  font-family: 'M PLUS 1p', sans-serif;
+}
+
+body {
+  font-family: 'M PLUS 1p', sans-serif;
+}
+
+.bg-burger-menu {
+  backdrop-filter: blur(10px);
+  background-color: rgba(200, 200, 200, 0.1);
+}

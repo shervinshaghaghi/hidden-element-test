@@ -1,0 +1,13 @@
+.PizzaType {
+    &__item {
+        &:hover > p {
+            opacity: 1;
+            height: unset;
+        }
+        p {
+            opacity: 0;
+            height: 0px;
+            transition-duration: 300ms;
+        }
+    }
+}
