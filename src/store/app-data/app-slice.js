@@ -16,8 +16,8 @@ const appSlice = createSlice({
   name: REDUCER_NAMES.APP,
   initialState,
   reducers: {
-    toggleDarkMode: (state) => {
-      state.darkMode = !state.darkMode;
+    toggleDarkMode: (state, action) => {
+      state.darkMode = action.payload;
     },
     setUserDataAction: (state, action) => {
       state.userAge = action.payload.age;
