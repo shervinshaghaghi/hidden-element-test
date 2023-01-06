@@ -4,12 +4,19 @@ import { VisiblePizzaSize } from 'components/pizza-size';
 import { VisibleHeader } from 'components/visible-header';
 import { SubmitOrderButton } from 'components/submit-order-button';
 
+import LOGO_IMAGE from 'assets/pizza.png';
+
 function VisibleElementPage() {
   titleGenerator('Visible Element');
 
   return (
     <div>
       <VisibleHeader />
+      <img
+        src={LOGO_IMAGE}
+        alt="PIZZA WIZARD"
+        className="mb-5 mx-auto animate__animated animate__bounceIn"
+      />
       <h1 className="text-center text-2xl mt-10 text-slate-500 dark:text-slate-200 font-bold">
         Please Select the Size & Type Of Your Pizza
       </h1>

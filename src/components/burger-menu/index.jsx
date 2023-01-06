@@ -27,9 +27,9 @@ function BurgerMenu() {
         className="absolute z-30 dark:invert px-6 text-sm rounded-lg leading-9 py-1"
       >
         {show ? (
-          <img width={20} alt="CLOSE" src={MENU_CLOSE_IMAGE} />
+          <img width={30} alt="CLOSE" src={MENU_CLOSE_IMAGE} />
         ) : (
-          <img alt="MENU" src={MENU_IMAGE} />
+          <img width={40} alt="MENU" src={MENU_IMAGE} />
         )}
       </button>
 
