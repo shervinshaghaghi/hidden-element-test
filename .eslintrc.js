@@ -22,12 +22,12 @@ module.exports = {
     'no-unused-vars': 'off',
     'no-cond-assign': 'off',
     'react/prop-types': 'off',
-    'prettier/prettier': 'error',
     'no-restricted-syntax': 'off',
     'import/no-unresolved': 'off',
     'no-extra-boolean-cast': 'off',
     'react/react-in-jsx-scope': 'off',
     'import/prefer-default-export': 'off',
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'no-empty': [
       'error',
       {
