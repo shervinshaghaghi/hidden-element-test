@@ -13,12 +13,14 @@ import { appSelectors } from 'store/app-data/app-selectors';
 function ThankYouPage() {
   titleGenerator('Thank You');
   const [showResult, setShowResult] = useState(false);
-  const { userAge, userJob, userEmail, clicks } = useSelector(appSelectors.appData);
+  const { userAge, userJob, userEmail, clicks, userSex, isHiddenTest } = useSelector(appSelectors.appData);
 
   const user = {
     age: userAge,
     job: userJob,
-    email: userEmail
+    sex: userSex,
+    email: userEmail,
+    isHiddenTest: isHiddenTest ? 'Hidden Test' : 'Visible Test',
   };
 
   const result = calculateData(user, clicks);
@@ -55,7 +57,9 @@ function ThankYouPage() {
           <p className={titleClasses}>USER</p>
           <ul className="list-disc mb-4">
             <li>{`User Age: ${result.user.age}`}</li>
+            <li>{`User Sex: ${result.user.sex}`}</li>
             <li>{`User Job: ${result.user.job}`}</li>
+            <li>{`User Test Type: ${result.user.isHiddenTest}`}</li>
           </ul>
 
           <p className={titleClasses}>TIME</p>

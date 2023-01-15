@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +22,8 @@ function HomePage() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
     age: '',
-    job: ''
+    job: '',
+    sex: ''
   });
 
   const onChanges = ({ target }) => {
@@ -30,13 +32,14 @@ function HomePage() {
 
   const onStart = (testName) => () => {
     const AGE = parseInt(userData.age);
+    const testIsHiddenType = testName === TESTS.HIDDEN_ELEMENT;
     // eslint-disable-next-line use-isnan
     if (AGE.toString().length !== 2 || AGE === NaN) {
       toast.error('Please, Enter your current age.');
       return;
     }
-    if (!userData.job) {
-      toast.error('Please, Enter your job title.');
+    if (userData.sex === '') {
+      toast.error('Please, Select your gender.');
       return;
     }
     if (testName === TESTS.HIDDEN_ELEMENT) {
@@ -45,7 +48,7 @@ function HomePage() {
     if (testName === TESTS.VISIBLE_ELEMENT) {
       navigate(VISIBLE_ELEMENT_PAGE_URL);
     }
-    store.dispatch(setUserDataAction(userData));
+    store.dispatch(setUserDataAction({...userData, isHiddenTest: testIsHiddenType }));
     localStorage.setItem(START_TIME_STORAGE_KEY, new Date().getTime());
   };
 
@@ -73,7 +76,31 @@ function HomePage() {
       </div>
 
       <div className="w-full flex flex-col gap-y-2">
-        <span className="text-sm">Your Age</span>
+        <div className="text-sm">
+          Your Sex
+          <span className="text-rose-500 ml-1">*</span>
+        </div>
+        <div className='flex items-center gap-x-4'>
+          <label htmlFor="male" className='cursor-pointer'>
+            <input id="male" type="radio" name="sex" value="male" className='mr-2' onChange={onChanges} />
+            Male
+          </label>
+          <label htmlFor="famale" className='cursor-pointer'>
+            <input id="famale" type="radio" name="sex" value="famale" className='mr-2' onChange={onChanges} />
+            Famale
+          </label>
+          <label htmlFor="other" className='cursor-pointer'>
+            <input id="other" type="radio" name="sex" value="other" className='mr-2' onChange={onChanges} />
+            Other
+          </label>
+        </div>
+      </div>
+
+      <div className="w-full flex flex-col gap-y-2">
+        <div className="text-sm">
+          Your Age
+          <span className="text-rose-500 ml-1">*</span>
+        </div>
         <input
           name="age"
           maxLength={2}
@@ -86,7 +113,7 @@ function HomePage() {
       </div>
 
       <div className="w-full flex flex-col gap-y-2 mb-2">
-        <span className="text-sm">Your Job Title</span>
+        <span className="text-sm">Your Job Title (optional)</span>
         <input
           name="job"
           value={userData.job}

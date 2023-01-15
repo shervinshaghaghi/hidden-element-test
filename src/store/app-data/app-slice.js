@@ -9,6 +9,8 @@ const initialState = {
   userAge: '',
   userJob: '',
   userEmail: '',
+  userSex: '',
+  isHiddenTest: false,
   darkMode: !!localStorage.getItem(DARK_MODE_STORAGE_KEY)
 };
 
@@ -22,6 +24,8 @@ const appSlice = createSlice({
     setUserDataAction: (state, action) => {
       state.userAge = action.payload.age;
       state.userJob = action.payload.job;
+      state.userSex = action.payload.sex;
+      state.isHiddenTest = action.payload.isHiddenTest;
     },
     setUserEmailAction: (state, action) => {
       state.userEmail = action.payload;
@@ -35,6 +39,8 @@ const appSlice = createSlice({
       state.userEmail = '';
       state.userAge = '';
       state.userJob = '';
+      state.userSex = '';
+      state.isHiddenTest = false;
       state.clicks = [];
       state.cart = {};
     },
