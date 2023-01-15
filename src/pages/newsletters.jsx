@@ -29,11 +29,11 @@ function NewslettersPage() {
     toast((t) => (
       <div className='flex flex-col items-center p-6'>
         <div>Your Registration Was Successful.</div>
-        <button className='bg-green-500 mt-4 px-5 rounded-md py-2 text-slate-50' onClick={onSuccess(t.id)}>
+        <button className='font-bold bg-green-500 mt-4 px-5 rounded-md py-2 text-slate-50' onClick={onSuccess(t.id)}>
           OK
         </button>
       </div>
-    ), { position: 'top-center' });
+    ), { duration:10000, position: 'top-center' });
   };
 
 
