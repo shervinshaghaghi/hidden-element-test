@@ -61,7 +61,7 @@ export const CATEGOREIS = {
   3: {
     id: 3,
     title: 'Meat king',
-    price: 14.5,
+    price: 13.5,
     description:
       'san marzano tomato, mozzarella fior di latte, Tuscan sausage, salami Napoli, chicken, pepperoni',
     image: ''
@@ -69,7 +69,7 @@ export const CATEGOREIS = {
   4: {
     id: 4,
     title: 'Honey honey',
-    price: 14.5,
+    price: 14,
     description:
       'mozzarella fior di latte (white base), goats cheese, candied walnuts, honey drizzle',
     image: ''

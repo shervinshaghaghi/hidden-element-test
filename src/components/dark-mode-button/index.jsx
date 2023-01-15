@@ -11,7 +11,7 @@ import SUN_IMAGE from 'assets/sun.svg';
 import MOON_IMAGE from 'assets/moon.svg';
 
 function DarkModeButton({ className }) {
-  const { darkMode } = useSelector(appSelectors.appData);
+  const { darkMode, isHiddenTest } = useSelector(appSelectors.appData);
   const toggleTheme = () => store.dispatch(toggleDarkMode(!darkMode));
 
   return (
@@ -19,7 +19,9 @@ function DarkModeButton({ className }) {
       onClick={toggleTheme}
       className={classNames('flex items-center gap-x-4', className)}
     >
-      <p className="text-sm">{`Go To ${darkMode ? 'Light' : 'Dark'} Mode`}</p>
+      {!isHiddenTest && (
+        <p className="text-sm">{`Go To ${darkMode ? 'Light' : 'Dark'} Mode`}</p>
+      )}
       <button
         type="button"
         data-click={CLICK_NAMES.TOGGLE_THEME}

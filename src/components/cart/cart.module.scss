@@ -1,0 +1,8 @@
+.Cart {
+    &__trigger {
+        transition-duration: 300ms;
+        &:hover > div {
+            display: block;
+        }
+    }
+}

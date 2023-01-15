@@ -25,7 +25,7 @@ function VisiblePizzaType({ isVisible = true }) {
     const id = +target.value;
     const item = TYPES[id];
     setSelectedValue(id);
-    store.dispatch(updateCartAction({ name: 'type', price: item.price }));
+    store.dispatch(updateCartAction({ name: 'type', price: item.price, item }));
   };
 
   const toggle = () => {
@@ -42,7 +42,7 @@ function VisiblePizzaType({ isVisible = true }) {
   useEffect(() => {
     const filterd = Object.values(TYPES).filter((item) => item.price === cart?.type);
     setSelectedValue(filterd?.[0]?.id);
-  }, [pathname]);
+  }, [pathname, cart]);
 
   return (
     <div className="mb-5">

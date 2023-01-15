@@ -37,8 +37,10 @@ const saveDataRequest = (data) => {
         hidden_size_hover: data.hidden.sizeHover,
         hidden_type_hover: data.hidden.typeHover,
         hidden_burger_menu: data.hidden.burgerItem,
+        //
         hidden_category: data.hidden.category,
         visible_category: data.visible.category,
+        hidden_cart_hover: data.hidden.cartHover,
         hidden_category_hover: data.hidden.categoryHover
       }
     })
@@ -66,6 +68,7 @@ export const calculateData = (user, data = [], saveData = false) => {
       type: filterByName(CLICK_NAMES.HIDDEN_TYPE_ITEM),
       size: filterByName(CLICK_NAMES.HIDDEN_SIZE_ITEM),
       accordion: filterByName(CLICK_NAMES.TOGGLE_ACCORDION),
+      cartHover: filterByName(CLICK_NAMES.HIDDEN_CART__HOVER),
       category: filterByName(CLICK_NAMES.HIDDEN_CATEGORY_ITEM),
       burgerItem: filterByName(CLICK_NAMES.HIDDEN_HEADER_ITEM),
       sizeHover: filterByName(CLICK_NAMES.HIDDEN_SIZE_ITEM__HOVER),

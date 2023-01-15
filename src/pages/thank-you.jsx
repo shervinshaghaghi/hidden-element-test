@@ -95,6 +95,7 @@ function ThankYouPage() {
             <li>{`Pizza Category Hover: ${result.hidden.categoryHover}`}</li>
             <li>{`Accordion Clicks: ${result.hidden.accordion}`}</li>
             <li>{`Burger Menu Item: ${result.hidden.burgerItem}`}</li>
+            <li>{`Cart Hover: ${result.hidden.cartHover}`}</li>
           </ul>
         </div>
       )}

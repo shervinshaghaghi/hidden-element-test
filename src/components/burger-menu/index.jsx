@@ -17,14 +17,14 @@ function BurgerMenu() {
   const toggleMenu = () => setShow(!show);
 
   const itemClasses =
-    'w-full pointer-events-none leading-10 px-4 border-b-2 border-solid border-transparent hover:border-slate-200 dark:hover:border-slate-800 mb-3';
+    'w-full pointer-events-none font-bold leading-10 px-4 border-b-2 border-solid border-transparent hover:border-slate-200 dark:hover:border-slate-800 mb-3';
 
   return (
     <>
       <button
         type="button"
         onClick={toggleMenu}
-        className="absolute z-30 dark:invert px-6 text-sm rounded-lg leading-9 py-1"
+        className="absolute z-30 dark:invert px-6 text-sm rounded-lg leading-9 py-1 left-5 top-5"
       >
         {show ? (
           <img width={30} alt="CLOSE" src={MENU_CLOSE_IMAGE} />

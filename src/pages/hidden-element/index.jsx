@@ -1,3 +1,4 @@
+import { Cart } from 'components/cart';
 import { BurgerMenu } from 'components/burger-menu';
 import { titleGenerator } from 'utils/title-generator';
 import { VisiblePizzaSize } from 'components/pizza-size';
@@ -10,7 +11,8 @@ import LOGO_IMAGE from 'assets/pizza.png';
 function HiddenElementPage() {
   titleGenerator('Hidden Element');
   return (
-    <div className="w-full relative p-5 overflow-hidden">
+    <div className="w-full relative p-5 overflow-hidden min-h-screen">
+      <Cart isVisible={false} />
       <BurgerMenu />
       <img
         src={LOGO_IMAGE}

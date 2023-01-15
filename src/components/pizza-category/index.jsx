@@ -27,7 +27,7 @@ function VisiblePizzaCategory({ isVisible = true }) {
     const id = +target.value;
     const item = CATEGOREIS[id];
     setSelectedValue(id);
-    store.dispatch(updateCartAction({ name: 'category', price: item.price }));
+    store.dispatch(updateCartAction({ name: 'category', price: item.price, item }));
   };
 
   const toggle = () => {
@@ -44,7 +44,7 @@ function VisiblePizzaCategory({ isVisible = true }) {
   useEffect(() => {
     const filterd = Object.values(CATEGOREIS).filter((item) => item.price === cart?.category);
     setSelectedValue(filterd?.[0]?.id);
-  }, [pathname]);
+  }, [pathname, cart]);
 
   const categoreisArray = Object.values(CATEGOREIS);
   return (
