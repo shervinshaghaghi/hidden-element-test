@@ -36,7 +36,10 @@ const saveDataRequest = (data) => {
         hidden_accordion: data.hidden.accordion,
         hidden_size_hover: data.hidden.sizeHover,
         hidden_type_hover: data.hidden.typeHover,
-        hidden_burger_menu: data.hidden.burgerItem
+        hidden_burger_menu: data.hidden.burgerItem,
+        hidden_category: data.hidden.category,
+        visible_category: data.visible.category,
+        hidden_category_hover: data.hidden.categoryHover
       }
     })
   })
@@ -56,15 +59,18 @@ export const calculateData = (user, data = [], saveData = false) => {
     visible: {
       type: filterByName(CLICK_NAMES.VISIBLE_TYPE_ITEM),
       size: filterByName(CLICK_NAMES.VISIBLE_SIZE_ITEM),
+      category: filterByName(CLICK_NAMES.VISIBLE_CATEGORY_ITEM),
       headerItem: filterByName(CLICK_NAMES.VISIBLE_HEADER_ITEM)
     },
     hidden: {
       type: filterByName(CLICK_NAMES.HIDDEN_TYPE_ITEM),
       size: filterByName(CLICK_NAMES.HIDDEN_SIZE_ITEM),
       accordion: filterByName(CLICK_NAMES.TOGGLE_ACCORDION),
+      category: filterByName(CLICK_NAMES.HIDDEN_CATEGORY_ITEM),
       burgerItem: filterByName(CLICK_NAMES.HIDDEN_HEADER_ITEM),
       sizeHover: filterByName(CLICK_NAMES.HIDDEN_SIZE_ITEM__HOVER),
-      typeHover: filterByName(CLICK_NAMES.HIDDEN_TYPE_ITEM__HOVER)
+      typeHover: filterByName(CLICK_NAMES.HIDDEN_TYPE_ITEM__HOVER),
+      categoryHover: filterByName(CLICK_NAMES.HIDDEN_CATEGORY_ITEM__HOVER)
     },
     time: msToTime(new Date().getTime() - localStorage.getItem(START_TIME_STORAGE_KEY))
   };

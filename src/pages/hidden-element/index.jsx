@@ -2,6 +2,7 @@ import { BurgerMenu } from 'components/burger-menu';
 import { titleGenerator } from 'utils/title-generator';
 import { VisiblePizzaSize } from 'components/pizza-size';
 import { VisiblePizzaType } from 'components/pizza-type';
+import { VisiblePizzaCategory } from 'components/pizza-category';
 import { SubmitOrderButton } from 'components/submit-order-button';
 
 import LOGO_IMAGE from 'assets/pizza.png';
@@ -9,7 +10,7 @@ import LOGO_IMAGE from 'assets/pizza.png';
 function HiddenElementPage() {
   titleGenerator('Hidden Element');
   return (
-    <div className="w-full h-screen relative p-5 overflow-hidden">
+    <div className="w-full relative p-5 overflow-hidden">
       <BurgerMenu />
       <img
         src={LOGO_IMAGE}
@@ -20,6 +21,7 @@ function HiddenElementPage() {
         Please Select Your Favorite Pizza
       </h1>
       <div className="w-full p-5 mx-auto max-w-5xl">
+        <VisiblePizzaCategory isVisible={false} />
         <VisiblePizzaSize isVisible={false} />
         <VisiblePizzaType isVisible={false} />
         <SubmitOrderButton />

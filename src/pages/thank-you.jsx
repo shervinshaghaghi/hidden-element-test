@@ -81,6 +81,7 @@ function ThankYouPage() {
           <ul className="list-disc mb-4">
             <li>{`Pizza Size: ${result.visible.size}`}</li>
             <li>{`Pizza Type: ${result.visible.type}`}</li>
+            <li>{`Pizza Category: ${result.visible.category}`}</li>
             <li>{`Header Button: ${result.visible.headerItem}`}</li>
           </ul>
 
@@ -88,8 +89,10 @@ function ThankYouPage() {
           <ul className="list-disc">
             <li>{`Pizza Size: ${result.hidden.size}`}</li>
             <li>{`Pizza Type: ${result.hidden.type}`}</li>
+            <li>{`Pizza Category: ${result.hidden.category}`}</li>
             <li>{`Pizza Size Hover: ${result.hidden.sizeHover}`}</li>
             <li>{`Pizza Type Hover: ${result.hidden.typeHover}`}</li>
+            <li>{`Pizza Category Hover: ${result.hidden.categoryHover}`}</li>
             <li>{`Accordion Clicks: ${result.hidden.accordion}`}</li>
             <li>{`Burger Menu Item: ${result.hidden.burgerItem}`}</li>
           </ul>
