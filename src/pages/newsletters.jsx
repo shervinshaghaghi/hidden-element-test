@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -13,16 +14,29 @@ function NewslettersPage() {
   const navigate = useNavigate();
   const [userEmail, setUserEmail] = useState('');
 
+  const onSuccess = (id) => () => {
+    toast.dismiss(id);
+    setUserEmail('');
+    navigate(-1);
+  }
+  
   const submit = () => {
     if (!userEmail) {
       toast.error('Please, Enter Your Email Address.');
       return;
     }
     store.dispatch(setUserEmailAction(userEmail));
-    toast.success('Your Registration Was Successful.');
-    setUserEmail('');
-    navigate(-1);
+    toast((t) => (
+      <div className='flex flex-col items-center p-6'>
+        <div>Your Registration Was Successful.</div>
+        <button className='bg-green-500 mt-4 px-5 rounded-md py-2 text-slate-50' onClick={onSuccess(t.id)}>
+          OK
+        </button>
+      </div>
+    ), { position: 'top-center' });
   };
+
+
 
   const classes = {
     input:
