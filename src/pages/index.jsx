@@ -60,7 +60,7 @@ function HomePage() {
   };
 
   return (
-    <div className="p-5 w-full max-w-sm mx-auto h-screen flex flex-col items-center justify-center gap-y-4">
+    <div className="p-5 w-full max-w-sm mx-auto min-h-screen flex flex-col items-center justify-center gap-y-4">
       <img
         src={LOGO_IMAGE}
         alt="PIZZA WIZARD"
