@@ -12,6 +12,7 @@ export const CLICK_NAMES = {
   VISIBLE_HEADER_ITEM: 'visible-header-item',
   HIDDEN_CATEGORY_ITEM: 'hidden-category-item',
   VISIBLE_CATEGORY_ITEM: 'visible-category-item',
+  CART_COUNTER_CHANGE_BTN: 'cart-counter-change-btn',
   // HOVER
   HIDDEN_CART__HOVER: 'hidden-cart-hover',
   HIDDEN_SIZE_ITEM__HOVER: 'hidden-size-item-hover',

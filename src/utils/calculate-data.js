@@ -26,6 +26,7 @@ const saveDataRequest = (data) => {
         theme: data.theme,
         age: data.user.age,
         job: data.user.job,
+        sex: data.user.sex,
         submit: data.submit,
         email: data.user.email,
         hidden_size: data.hidden.size,
@@ -38,6 +39,7 @@ const saveDataRequest = (data) => {
         hidden_type_hover: data.hidden.typeHover,
         hidden_burger_menu: data.hidden.burgerItem,
         //
+        counter_change: data.counterChange,
         hidden_category: data.hidden.category,
         visible_category: data.visible.category,
         hidden_cart_hover: data.hidden.cartHover,
@@ -58,6 +60,7 @@ export const calculateData = (user, data = [], saveData = false) => {
     cta: filterByName(CLICK_NAMES.CTA_BTN),
     submit: filterByName(CLICK_NAMES.SUBMIT_BTN),
     theme: filterByName(CLICK_NAMES.TOGGLE_THEME),
+    counterChange: filterByName(CLICK_NAMES.CART_COUNTER_CHANGE_BTN),
     visible: {
       type: filterByName(CLICK_NAMES.VISIBLE_TYPE_ITEM),
       size: filterByName(CLICK_NAMES.VISIBLE_SIZE_ITEM),

@@ -50,7 +50,7 @@ function Routes() {
           <Route path={HIDDEN_ELEMENT_PAGE_URL} element={<HiddenElementPage />} />
           <Route path={VISIBLE_ELEMENT_PAGE_URL} element={<VisibleElementPage />} />
 
-          <Route path={NOT_FOUNT_URL} element={<NotFoundPage />} />
+          <Route path={NOT_FOUNT_URL} element={<HomePage />} />
           <Route path={HOME_URL} element={<HomePage />} exact />
           <Route path="*" element={<Navigate to={NOT_FOUNT_URL} />} />
         </Switch>

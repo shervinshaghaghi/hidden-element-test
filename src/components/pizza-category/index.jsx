@@ -42,7 +42,9 @@ function VisiblePizzaCategory({ isVisible = true }) {
   };
 
   useEffect(() => {
-    const filterd = Object.values(CATEGOREIS).filter((item) => item.price === cart?.category);
+    const filterd = Object.values(CATEGOREIS).filter(
+      (item) => item.price === cart?.category
+    );
     setSelectedValue(filterd?.[0]?.id);
   }, [pathname, cart]);
 
@@ -77,58 +79,61 @@ function VisiblePizzaCategory({ isVisible = true }) {
       {show && (
         <div
           style={{ minHeight: 120 }}
-          className="w-full grid grid-cols-5 justify-center gap-4"
+          className="w-full grid grid-cols-3 justify-center gap-4"
         >
-          {categoreisArray.splice(0, showAllCategory || isVisible ? categoreisArray.length : 2).map((item) => (
-            <label
-              onMouseEnter={checkHover}
-              htmlFor={item.title}
-              data-click={
-                isVisible ? CLICK_NAMES.VISIBLE_CATEGORY_ITEM : CLICK_NAMES.HIDDEN_CATEGORY_ITEM
-              }
-              className={classNames(
-                'animate__animated animate__fadeIn cursor-pointer overflow-hidden border-2 border-transparent border-solid p-4 flex flex-col items-center justify-center rounded-lg dark:bg-slate-600 bg-slate-100 shadow-md',
-                {
-                  [styles.PizzaCategory__item]: !isVisible,
-                  'border-green-500': selectedValue === item.id
+          {categoreisArray
+            .splice(0, showAllCategory || isVisible ? categoreisArray.length : 2)
+            .map((item) => (
+              <label
+                onMouseEnter={checkHover}
+                htmlFor={item.title}
+                data-click={
+                  isVisible
+                    ? CLICK_NAMES.VISIBLE_CATEGORY_ITEM
+                    : CLICK_NAMES.HIDDEN_CATEGORY_ITEM
                 }
-              )}
-            >
-              <h3 className="pointer-events-none font-bold">{item.title}</h3>
-              <h3 className="pointer-events-none text-sm mt-2 whitespace-nowrap text-red-800 dark:text-rose-500">
-                Price: {item.price}$
-              </h3>
-              {item.description && (
-                <p className="pointer-events-none text-sm mt-2">
-                  {item.description}
-                </p>
-              )}
-              <input
-                type="radio"
-                name="category"
-                id={item.title}
-                value={item.id}
-                className="hidden"
-                onChange={onSelect}
-                checked={item.id === selectedValue}
-              />
-            </label>
-          ))}
-          {
-            !showAllCategory && !isVisible && (
-              <button
-                onClick={() => setShowAllCategory(true)}
+                style={{ height: 230 }}
                 className={classNames(
-                  'animate__animated animate__fadeIn cursor-pointer border-2 border-transparent border-solid py-4 px-6 flex flex-col items-center justify-center rounded-lg dark:bg-slate-600 bg-slate-100 shadow-md',
+                  'animate__animated animate__fadeIn cursor-pointer overflow-hidden border-2 border-transparent border-solid p-4 flex flex-col items-center justify-center rounded-lg dark:bg-slate-600 bg-slate-100 shadow-md',
                   {
                     [styles.PizzaCategory__item]: !isVisible,
+                    'border-green-500': selectedValue === item.id
                   }
                 )}
               >
-                More ...
-              </button>
-            )
-          }
+                <h3 className="pointer-events-none font-bold">{item.title}</h3>
+                <h3 className="pointer-events-none text-sm mt-2 whitespace-nowrap text-red-800 dark:text-rose-500">
+                  Price: {item.price}$
+                </h3>
+                {item.description && (
+                  <p className="pointer-events-none text-sm mt-3 text-justify leading-6">
+                    {item.description}
+                  </p>
+                )}
+                <input
+                  type="radio"
+                  name="category"
+                  id={item.title}
+                  value={item.id}
+                  className="hidden"
+                  onChange={onSelect}
+                  checked={item.id === selectedValue}
+                />
+              </label>
+            ))}
+          {!showAllCategory && !isVisible && (
+            <button
+              onClick={() => setShowAllCategory(true)}
+              className={classNames(
+                'animate__animated animate__fadeIn cursor-pointer border-2 border-transparent border-solid py-4 px-6 flex flex-col items-center justify-center rounded-lg dark:bg-slate-600 bg-slate-100 shadow-md',
+                {
+                  [styles.PizzaCategory__item]: !isVisible
+                }
+              )}
+            >
+              More ...
+            </button>
+          )}
         </div>
       )}
     </div>

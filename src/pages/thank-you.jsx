@@ -60,7 +60,7 @@ function ThankYouPage() {
           <ul className="list-disc mb-4">
             <li>{`User Age: ${result.user.age}`}</li>
             <li>{`User Sex: ${result.user.sex}`}</li>
-            <li>{`User Job: ${result.user.job}`}</li>
+            <li>{`User Job: ${result.user.job ? result.user.job : 'None'}`}</li>
             <li>{`User Test Type: ${result.user.isHiddenTest}`}</li>
           </ul>
 
@@ -75,6 +75,7 @@ function ThankYouPage() {
             <li>{`Submit Order Button: ${result.submit}`}</li>
             <li>{`Call To Action Button: ${result.cta}`}</li>
             <li>{`Change Theme Button: ${result.theme}`}</li>
+            <li>{`Change Cart Counter Buttons: ${result.counterChange}`}</li>
           </ul>
 
           <p className={titleClasses}>VISIBLE</p>
@@ -93,9 +94,10 @@ function ThankYouPage() {
             <li>{`Pizza Size Hover: ${result.hidden.sizeHover}`}</li>
             <li>{`Pizza Type Hover: ${result.hidden.typeHover}`}</li>
             <li>{`Pizza Category Hover: ${result.hidden.categoryHover}`}</li>
+
+            <li className="mt-3">{`Cart Hover: ${result.hidden.cartHover}`}</li>
             <li>{`Accordion Clicks: ${result.hidden.accordion}`}</li>
             <li>{`Burger Menu Item: ${result.hidden.burgerItem}`}</li>
-            <li>{`Cart Hover: ${result.hidden.cartHover}`}</li>
           </ul>
         </div>
       )}

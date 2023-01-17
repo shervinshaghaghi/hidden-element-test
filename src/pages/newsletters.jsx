@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { toast } from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
@@ -29,22 +28,29 @@ function NewslettersPage() {
     toast.dismiss(id);
     setUserEmail('');
     navigate(-1);
-  }
-  
+  };
+
   const submit = () => {
     if (!userEmail) {
       toast.error('Please, Enter Your Email Address.');
       return;
     }
     store.dispatch(setUserEmailAction(userEmail));
-    toast((t) => (
-      <div className='flex flex-col items-center p-6'>
-        <div>Your Registration Was Successful.</div>
-        <button className='font-bold bg-green-500 mt-4 px-5 rounded-md py-2 text-slate-50' onClick={onSuccess(t.id)}>
-          OK
-        </button>
-      </div>
-    ), { duration:10000, position: 'top-center' });
+    toast(
+      (t) => (
+        <div className="flex flex-col items-center p-6">
+          <div>Your Registration Was Successful.</div>
+          <button
+            type="button"
+            className="font-bold bg-green-500 mt-4 px-5 rounded-md py-2 text-slate-50"
+            onClick={onSuccess(t.id)}
+          >
+            OK
+          </button>
+        </div>
+      ),
+      { duration: 10000, position: 'top-center' }
+    );
   };
 
   const classes = {
@@ -93,7 +99,7 @@ function NewslettersPage() {
             onClick={() => setShowForm(true)}
           >
             Join
-            <img width={10} className='-rotate-90 invert ml-2' alt='' src={ARROW_IMAGE} />
+            <img width={10} className="-rotate-90 invert ml-2" alt="" src={ARROW_IMAGE} />
           </button>
         )}
 

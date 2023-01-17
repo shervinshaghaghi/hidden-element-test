@@ -1,8 +1,12 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { Cart } from 'components/cart';
 import { BurgerMenu } from 'components/burger-menu';
 import { titleGenerator } from 'utils/title-generator';
 import { VisiblePizzaSize } from 'components/pizza-size';
 import { VisiblePizzaType } from 'components/pizza-type';
+import { changeTestType } from 'store/app-data/app-slice';
 import { VisiblePizzaCategory } from 'components/pizza-category';
 import { SubmitOrderButton } from 'components/submit-order-button';
 
@@ -10,6 +14,12 @@ import LOGO_IMAGE from 'assets/pizza.png';
 
 function HiddenElementPage() {
   titleGenerator('Hidden Element');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(changeTestType(true));
+  }, []);
+
   return (
     <div className="w-full relative p-5 overflow-hidden min-h-screen">
       <Cart isVisible={false} />

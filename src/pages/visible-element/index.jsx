@@ -1,15 +1,24 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { Cart } from 'components/cart';
 import { titleGenerator } from 'utils/title-generator';
 import { VisiblePizzaType } from 'components/pizza-type';
 import { VisiblePizzaSize } from 'components/pizza-size';
 import { VisibleHeader } from 'components/visible-header';
+import { changeTestType } from 'store/app-data/app-slice';
 import { VisiblePizzaCategory } from 'components/pizza-category';
 import { SubmitOrderButton } from 'components/submit-order-button';
 
 import LOGO_IMAGE from 'assets/pizza.png';
-import { Cart } from 'components/cart';
 
 function VisibleElementPage() {
   titleGenerator('Visible Element');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(changeTestType(false));
+  }, []);
 
   return (
     <div className="w-full min-h-screen flex">

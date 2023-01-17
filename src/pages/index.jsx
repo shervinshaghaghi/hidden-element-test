@@ -1,12 +1,12 @@
-/* eslint-disable */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 import { store } from 'store';
 import { CLICK_NAMES } from 'constants/click-names';
 import { titleGenerator } from 'utils/title-generator';
-import { setUserDataAction } from 'store/app-data/app-slice';
+import { resetAction, setUserDataAction } from 'store/app-data/app-slice';
 import { START_TIME_STORAGE_KEY } from 'constants/local-storage-keys';
 import { HIDDEN_ELEMENT_PAGE_URL, VISIBLE_ELEMENT_PAGE_URL } from 'constants/app-routes';
 
@@ -19,12 +19,17 @@ const TESTS = {
 
 function HomePage() {
   titleGenerator();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
     age: '',
     job: '',
     sex: ''
   });
+
+  useEffect(() => {
+    dispatch(resetAction());
+  }, []);
 
   const onChanges = ({ target }) => {
     setUserData({ ...userData, [target.name]: target.value });
@@ -48,7 +53,7 @@ function HomePage() {
     if (testName === TESTS.VISIBLE_ELEMENT) {
       navigate(VISIBLE_ELEMENT_PAGE_URL);
     }
-    store.dispatch(setUserDataAction({...userData, isHiddenTest: testIsHiddenType }));
+    store.dispatch(setUserDataAction({ ...userData, isHiddenTest: testIsHiddenType }));
     localStorage.setItem(START_TIME_STORAGE_KEY, new Date().getTime());
   };
 
@@ -60,7 +65,7 @@ function HomePage() {
   };
 
   return (
-    <div className="p-5 w-full max-w-sm mx-auto h-screen flex flex-col items-center justify-center gap-y-4">
+    <div className="p-5 w-full max-w-sm mx-auto min-h-screen flex flex-col items-center justify-center gap-y-4">
       <img
         src={LOGO_IMAGE}
         alt="PIZZA WIZARD"
@@ -80,17 +85,38 @@ function HomePage() {
           Your Sex
           <span className="text-rose-500 ml-1">*</span>
         </div>
-        <div className='flex items-center gap-x-4'>
-          <label htmlFor="male" className='cursor-pointer'>
-            <input id="male" type="radio" name="sex" value="male" className='mr-2' onChange={onChanges} />
+        <div className="flex items-center gap-x-4">
+          <label htmlFor="male" className="cursor-pointer">
+            <input
+              id="male"
+              type="radio"
+              name="sex"
+              value="male"
+              className="mr-2"
+              onChange={onChanges}
+            />
             Male
           </label>
-          <label htmlFor="famale" className='cursor-pointer'>
-            <input id="famale" type="radio" name="sex" value="famale" className='mr-2' onChange={onChanges} />
+          <label htmlFor="famale" className="cursor-pointer">
+            <input
+              id="famale"
+              type="radio"
+              name="sex"
+              value="famale"
+              className="mr-2"
+              onChange={onChanges}
+            />
             Famale
           </label>
-          <label htmlFor="other" className='cursor-pointer'>
-            <input id="other" type="radio" name="sex" value="other" className='mr-2' onChange={onChanges} />
+          <label htmlFor="other" className="cursor-pointer">
+            <input
+              id="other"
+              type="radio"
+              name="sex"
+              value="other"
+              className="mr-2"
+              onChange={onChanges}
+            />
             Other
           </label>
         </div>
@@ -139,6 +165,9 @@ function HomePage() {
       >
         Hidden Element Test
       </button>
+      <br />
+      <br />
+      <br />
     </div>
   );
 }

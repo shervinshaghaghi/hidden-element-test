@@ -4,6 +4,7 @@ import { REDUCER_NAMES } from 'constants/reducer-names';
 import { DARK_MODE_STORAGE_KEY } from 'constants/local-storage-keys';
 
 const initialState = {
+  count: 1,
   cart: {},
   _cart: {},
   clicks: [],
@@ -21,6 +22,12 @@ const appSlice = createSlice({
   reducers: {
     toggleDarkMode: (state, action) => {
       state.darkMode = action.payload;
+    },
+    changeTestType: (state, action) => {
+      state.isHiddenTest = action.payload;
+    },
+    changeCount: (state, action) => {
+      state.count = action.payload;
     },
     setUserDataAction: (state, action) => {
       state.userAge = action.payload.age;
@@ -48,6 +55,7 @@ const appSlice = createSlice({
       state.clicks = [];
       state.cart = {};
       state._cart = {};
+      state.count = 1;
     },
     clickAction: (state, action) => {
       const currentClicks = state.clicks;
@@ -55,6 +63,7 @@ const appSlice = createSlice({
       state.clicks = currentClicks;
     },
     removeCartItems: (state) => {
+      state.count = 1;
       state.cart = {};
       state._cart = {};
     }
@@ -64,6 +73,8 @@ const appSlice = createSlice({
 export const {
   resetAction,
   clickAction,
+  changeCount,
+  changeTestType,
   toggleDarkMode,
   removeCartItems,
   updateCartAction,
