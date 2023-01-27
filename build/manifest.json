@@ -1,0 +1,17 @@
+{
+  "short_name": "Pizza Wizard",
+  "name": "Pizza Wizard",
+  "arthor": "Ramin Rezaei",
+  "icons": [
+    {
+      "src": "pizza.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#D84861",
+  "background_color": "#F4F5F7",
+  "description": "A Test For Hidden Elements (Pizza Wizard)"
+}
