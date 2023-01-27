@@ -17,7 +17,8 @@ import styles from './cart.module.scss';
 const CartContent = () => {
   const dispatch = useDispatch();
   const [counter, setCounter] = useState(1);
-  const { cart, _cart } = useSelector(appSelectors.appData);
+  const { cart, _cart, isHiddenTest } = useSelector(appSelectors.appData);
+
   const pizzaName = `${CATEGOREIS[_cart?.category?.id]?.title} ${
     TYPES[_cart?.type?.id]?.title ? `- ${TYPES[_cart?.type?.id]?.title}` : ''
   } ${SIZES[_cart?.size?.id]?.title ? `(${SIZES[_cart?.size?.id]?.title})` : ''}`;
@@ -50,18 +51,24 @@ const CartContent = () => {
             className="dark:bg-slate-600 bg-slate-200 rounded-lg px-3"
             onClick={plus}
           >
-            +
+            {isHiddenTest ? '+' : 'Add'}
           </button>
           {counter}
           <button
             style={{ height: 40 }}
             data-click={CLICK_NAMES.CART_COUNTER_CHANGE_BTN}
             className={classNames('dark:bg-slate-600 bg-slate-200 rounded-lg px-3', {
-              'text-xs': counter === 1
+              'text-xs': isHiddenTest && counter === 1
             })}
             onClick={remove}
           >
-            {counter === 1 ? 'Delete' : '-'}
+            {isHiddenTest
+              ? counter === 1
+                ? 'Delete'
+                : '-'
+              : counter === 1
+              ? 'Delete'
+              : 'Minus'}
           </button>
         </div>
       </div>
@@ -69,7 +76,7 @@ const CartContent = () => {
       <div className="my-4 px-4 text-sm">{`Total Price: ${
         counter * Object.values(cart).reduce((partialSum, a) => partialSum + a, 0)
       }$`}</div>
-      <SubmitOrderButton hidePrice />
+      <SubmitOrderButton hidePrice hideCancelBtn />
     </>
   );
 };

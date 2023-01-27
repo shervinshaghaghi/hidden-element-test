@@ -24,13 +24,13 @@ import {
 } from 'constants/app-routes';
 
 import { HomePage } from 'pages';
-import { NotFoundPage } from 'pages/404';
+// import { NotFoundPage } from 'pages/404';
 import { AboutUsPage } from 'pages/about-us';
+import { ThankYouPage } from 'pages/thank-you';
 import { ContactUsPage } from 'pages/contact-us';
 import { NewslettersPage } from 'pages/newsletters';
 import { HiddenElementPage } from 'pages/hidden-element';
 import { VisibleElementPage } from 'pages/visible-element';
-import { ThankYouPage } from 'pages/thank-you';
 
 function Routes() {
   useEffect(() => {
@@ -50,9 +50,9 @@ function Routes() {
           <Route path={HIDDEN_ELEMENT_PAGE_URL} element={<HiddenElementPage />} />
           <Route path={VISIBLE_ELEMENT_PAGE_URL} element={<VisibleElementPage />} />
 
-          <Route path={NOT_FOUNT_URL} element={<HomePage />} />
+          <Route path={HOME_URL} element={<HomePage />} />
           <Route path={HOME_URL} element={<HomePage />} exact />
-          <Route path="*" element={<Navigate to={NOT_FOUNT_URL} />} />
+          <Route path="*" element={<Navigate to={HOME_URL} />} />
         </Switch>
       </AppLayout>
     </Router>

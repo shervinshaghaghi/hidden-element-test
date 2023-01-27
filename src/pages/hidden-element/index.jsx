@@ -36,7 +36,7 @@ function HiddenElementPage() {
         <VisiblePizzaCategory isVisible={false} />
         <VisiblePizzaSize isVisible={false} />
         <VisiblePizzaType isVisible={false} />
-        <SubmitOrderButton />
+        <SubmitOrderButton hideSubmitBtn />
       </div>
     </div>
   );

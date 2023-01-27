@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+import { Tooltip } from 'react-tooltip';
 import { toast } from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
@@ -10,8 +12,11 @@ import { titleGenerator } from 'utils/title-generator';
 import { appSelectors } from 'store/app-data/app-selectors';
 import { setUserEmailAction } from 'store/app-data/app-slice';
 
+import INFO_IMAGE from 'assets/info.png';
 import ARROW_IMAGE from 'assets/arrow.png';
-import classNames from 'classnames';
+import CLEAN_IMAGE from 'assets/close.png';
+
+import 'react-tooltip/dist/react-tooltip.css';
 
 function NewslettersPage() {
   titleGenerator('Newsletters');
@@ -55,7 +60,7 @@ function NewslettersPage() {
 
   const classes = {
     input:
-      'px-4 bg-transparent duration-300 rounded-lg leading-10 outline-none border-2 border-solid focus:border-amber-500',
+      'w-full px-4 bg-transparent duration-300 rounded-lg leading-10 outline-none border-2 border-solid focus:border-amber-500',
     button:
       'w-full duration-300 mb-5 rounded-lg py-1 mt-1 leading-9 text-slate-50 bg-rose-700 hover:bg-rose-600'
   };
@@ -72,14 +77,59 @@ function NewslettersPage() {
         {showForm ? (
           <>
             <div className="w-full flex flex-col gap-y-2 mb-2">
-              <span className="text-sm">Your Email Address</span>
-              <input
-                type="email"
-                value={userEmail}
-                className={classes.input}
-                placeholder="Enter Your Email Address"
-                onChange={({ target }) => setUserEmail(target.value)}
-              />
+              <div
+                className={classNames('w-full flex items-center', {
+                  'flex-col justify-start text-left': !isHiddenTest
+                })}
+              >
+                <span className="text-sm">Your Email Address</span>
+                {isHiddenTest ? (
+                  <>
+                    <img
+                      width={20}
+                      alt="INFO"
+                      src={INFO_IMAGE}
+                      id="info-tooltip"
+                      className="ml-2 opacity-70"
+                    />
+                    <Tooltip
+                      anchorId="info-tooltip"
+                      content="To order pizza, filling out the following field is mandatory."
+                    />
+                  </>
+                ) : (
+                  <span className="text-xs mt-1 opacity-75 mb-2">
+                    (To order pizza, filling out the following field is mandatory.)
+                  </span>
+                )}
+              </div>
+              <div className="relative">
+                <input
+                  type="email"
+                  value={userEmail}
+                  className={classes.input}
+                  placeholder="Enter Your Email Address"
+                  onChange={({ target }) => setUserEmail(target.value)}
+                />
+                {userEmail.length > 3 && (
+                  <button
+                    type="button"
+                    onClick={() => setUserEmail('')}
+                    className="absolute top-0 right-0 mr-4 mt-3 text-sm"
+                  >
+                    {isHiddenTest ? (
+                      <img
+                        width={20}
+                        alt="Clean"
+                        src={CLEAN_IMAGE}
+                        className="opacity-70"
+                      />
+                    ) : (
+                      'Clean'
+                    )}
+                  </button>
+                )}
+              </div>
             </div>
 
             <button

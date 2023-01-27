@@ -6,8 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { CLICK_NAMES } from 'constants/click-names';
 import { appSelectors } from 'store/app-data/app-selectors';
 import { HOME_URL, THANK_YOU_PAGE_URL } from 'constants/app-routes';
+import { useEffect } from 'react';
 
-function SubmitOrderButton({ hidePrice = false }) {
+function SubmitOrderButton({
+  hidePrice = false,
+  hideSubmitBtn = false,
+  hideCancelBtn = false
+}) {
   const navigate = useNavigate();
   const { count, cart, userEmail } = useSelector(appSelectors.appData);
 
@@ -23,6 +28,12 @@ function SubmitOrderButton({ hidePrice = false }) {
     toast.dismiss(id);
     navigate(HOME_URL);
   };
+
+  useEffect(() => {
+    if (Object.keys(cart).length === 3) {
+      window.scroll(0, 0);
+    }
+  }, [Object.keys(cart).length]);
 
   const showLeaveModal = () => {
     toast(
@@ -57,37 +68,42 @@ function SubmitOrderButton({ hidePrice = false }) {
         'my-8': !hidePrice
       })}
     >
-      <button
-        type="button"
-        onClick={onSubmit}
-        data-click={CLICK_NAMES.SUBMIT_BTN}
-        className={classNames(
-          'text-sm text-slate-50 bg-green-500 hover:bg-green-600 duration-300 leading-10 rounded-lg',
-          {
-            'px-3': hidePrice,
-            'py-1 px-4': !hidePrice
-          }
-        )}
-      >
-        {hidePrice
-          ? 'Submit Order'
-          : `Submit Order ( ${
-              count * Object.values(cart).reduce((partialSum, a) => partialSum + a, 0)
-            }$ )`}
-      </button>
-      <button
-        type="button"
-        onClick={showLeaveModal}
-        className={classNames(
-          'text-sm text-slate-50 bg-rose-500 hover:bg-rose-600 duration-300 leading-10 rounded-lg',
-          {
-            'px-3': hidePrice,
-            'py-1 px-4': !hidePrice
-          }
-        )}
-      >
-        Cancel
-      </button>
+      {!hideSubmitBtn && (
+        <button
+          type="button"
+          onClick={onSubmit}
+          data-click={CLICK_NAMES.SUBMIT_BTN}
+          className={classNames(
+            'text-sm text-slate-50 bg-green-500 hover:bg-green-600 duration-300 leading-10 rounded-lg',
+            {
+              'px-3': hidePrice,
+              'py-1 px-4': !hidePrice
+            }
+          )}
+        >
+          {hidePrice
+            ? 'Submit Order'
+            : `Submit Order ( ${
+                count * Object.values(cart).reduce((partialSum, a) => partialSum + a, 0)
+              }$ )`}
+        </button>
+      )}
+
+      {!hideCancelBtn && (
+        <button
+          type="button"
+          onClick={showLeaveModal}
+          className={classNames(
+            'text-sm text-slate-50 bg-rose-500 hover:bg-rose-600 duration-300 leading-10 rounded-lg',
+            {
+              'px-3': hidePrice,
+              'py-1 px-4': !hidePrice
+            }
+          )}
+        >
+          Cancel Prototype
+        </button>
+      )}
     </div>
   );
 }

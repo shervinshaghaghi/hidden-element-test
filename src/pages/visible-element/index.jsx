@@ -36,7 +36,7 @@ function VisibleElementPage() {
           <VisiblePizzaCategory />
           <VisiblePizzaSize />
           <VisiblePizzaType />
-          <SubmitOrderButton />
+          <SubmitOrderButton hideSubmitBtn />
         </div>
       </div>
       <Cart />
