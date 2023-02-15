@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-hot-toast';
@@ -11,6 +12,7 @@ import { START_TIME_STORAGE_KEY } from 'constants/local-storage-keys';
 import { HIDDEN_ELEMENT_PAGE_URL, VISIBLE_ELEMENT_PAGE_URL } from 'constants/app-routes';
 
 import LOGO_IMAGE from 'assets/pizza.png';
+import classNames from 'classnames';
 
 const TESTS = {
   HIDDEN_ELEMENT: 'HIDDEN_ELEMENT',
@@ -22,9 +24,10 @@ function HomePage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
-    age: '',
-    job: '',
-    sex: ''
+    name: '',
+    age: '18 - 24',
+    job: 'Prefer not to answer',
+    sex: 'Male'
   });
 
   useEffect(() => {
@@ -36,10 +39,8 @@ function HomePage() {
   };
 
   const onStart = (testName) => () => {
-    const AGE = parseInt(userData.age);
     const testIsHiddenType = testName === TESTS.HIDDEN_ELEMENT;
-    // eslint-disable-next-line use-isnan
-    if (AGE.toString().length !== 2 || AGE === NaN) {
+    if (userData.age === '') {
       toast.error('Please, Enter your current age.');
       return;
     }
@@ -75,78 +76,86 @@ function HomePage() {
       <div className="animate__animated shadow-md animate__fadeIn flex flex-col w-full text-sm bg-slate-100 dark:bg-slate-600 p-4 rounded-lg">
         <h3 className="mb-2 font-bold text-md">Your Tasks:</h3>
         <ul className="flex flex-col gap-y-2 w-full">
-          <li>1 - Join To Our Newsletters.</li>
+          <li>1 - Create An Account.</li>
           <li>2 - Order Your Favorite Pizza.</li>
         </ul>
       </div>
 
       <div className="w-full flex flex-col gap-y-2">
-        <div className="text-sm">
-          Your Sex
-          <span className="text-rose-500 ml-1">*</span>
-        </div>
-        <div className="flex items-center gap-x-4">
-          <label htmlFor="male" className="cursor-pointer">
-            <input
-              id="male"
-              type="radio"
-              name="sex"
-              value="male"
-              className="mr-2"
-              onChange={onChanges}
-            />
-            Male
-          </label>
-          <label htmlFor="famale" className="cursor-pointer">
-            <input
-              id="famale"
-              type="radio"
-              name="sex"
-              value="famale"
-              className="mr-2"
-              onChange={onChanges}
-            />
-            Famale
-          </label>
-          <label htmlFor="other" className="cursor-pointer">
-            <input
-              id="other"
-              type="radio"
-              name="sex"
-              value="other"
-              className="mr-2"
-              onChange={onChanges}
-            />
-            Other
-          </label>
-        </div>
+        <div className="text-sm">What's Your Name? (optional)</div>
+        <input
+          name="name"
+          onChange={onChanges}
+          value={userData.name}
+          placeholder="Enter Your Name"
+          className={classNames('bg-transparent h-11', classes.input)}
+        />
       </div>
 
       <div className="w-full flex flex-col gap-y-2">
         <div className="text-sm">
-          Your Age
+          To which gender identity do you most identify?
           <span className="text-rose-500 ml-1">*</span>
         </div>
-        <input
-          name="age"
-          maxLength={2}
-          minLength={2}
-          value={userData.age}
+        <select
+          name="sex"
           onChange={onChanges}
-          className={classes.input}
-          placeholder="Enter Your Age"
-        />
+          className={classNames('bg-transparent h-11', classes.input)}
+        >
+          <option value="Male" selected>
+            Male
+          </option>
+          <option value="Female">Female</option>
+          <option value="Non-Binary">Non-Binary</option>
+          <option value="Prefer not to answer">Prefer not to answer</option>
+        </select>
+      </div>
+
+      <div className="w-full flex flex-col gap-y-2">
+        <div className="text-sm">
+          What is your age?
+          <span className="text-rose-500 ml-1">*</span>
+        </div>
+        <select
+          name="age"
+          onChange={onChanges}
+          className={classNames('bg-transparent h-11', classes.input)}
+        >
+          <option value="18 - 24" selected>
+            18 - 24 years old
+          </option>
+          <option value="25 - 34">25 - 34 years old</option>
+          <option value="35 - 44">35 - 44 years old</option>
+          <option value="45 - 54">45 - 54 years old</option>
+          <option value="55 - 64">55 - 64 years old</option>
+          <option value="65+">65+ years old</option>
+          <option value="Prefer not to answer">Prefer not to answer</option>
+        </select>
       </div>
 
       <div className="w-full flex flex-col gap-y-2 mb-2">
-        <span className="text-sm">Your Job Title (optional)</span>
-        <input
+        <span className="text-sm">
+          What is the highest dgree or school level you have compleeted (optional)
+        </span>
+        <select
           name="job"
-          value={userData.job}
           onChange={onChanges}
-          className={classes.input}
-          placeholder="Enter Your Job Title"
-        />
+          className={classNames('bg-transparent h-11', classes.input)}
+        >
+          <option value="Less than a high school">Less than a high school</option>
+          <option value="High school graduate or equivalent">
+            High school graduate or equivalent
+          </option>
+          <option value="Some college credit, but no degree">
+            Some college credit, but no degree
+          </option>
+          <option value="Bachelor's degree">Bachelor's degree</option>
+          <option value="Master's degree">Master's degree</option>
+          <option value="PhD or higher">PhD or higher</option>
+          <option value="Prefer not to answer" selected>
+            Prefer not to answer
+          </option>
+        </select>
       </div>
 
       <button

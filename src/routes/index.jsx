@@ -16,9 +16,10 @@ import {
   HOME_URL,
   NOT_FOUNT_URL,
   ABOUT_US_PAGE_URL,
+  REGISTER_PAGE_URL,
   THANK_YOU_PAGE_URL,
   CONTACT_US_PAGE_URL,
-  NEWSLETTERS_PAGE_URL,
+  // NEWSLETTERS_PAGE_URL,
   HIDDEN_ELEMENT_PAGE_URL,
   VISIBLE_ELEMENT_PAGE_URL
 } from 'constants/app-routes';
@@ -26,9 +27,10 @@ import {
 import { HomePage } from 'pages';
 // import { NotFoundPage } from 'pages/404';
 import { AboutUsPage } from 'pages/about-us';
+import { RegisterPage } from 'pages/register';
 import { ThankYouPage } from 'pages/thank-you';
 import { ContactUsPage } from 'pages/contact-us';
-import { NewslettersPage } from 'pages/newsletters';
+// import { NewslettersPage } from 'pages/newsletters';
 import { HiddenElementPage } from 'pages/hidden-element';
 import { VisibleElementPage } from 'pages/visible-element';
 
@@ -46,7 +48,8 @@ function Routes() {
           <Route path={ABOUT_US_PAGE_URL} element={<AboutUsPage />} />
           <Route path={THANK_YOU_PAGE_URL} element={<ThankYouPage />} />
           <Route path={CONTACT_US_PAGE_URL} element={<ContactUsPage />} />
-          <Route path={NEWSLETTERS_PAGE_URL} element={<NewslettersPage />} />
+          {/* <Route path={NEWSLETTERS_PAGE_URL} element={<NewslettersPage />} /> */}
+          <Route path={REGISTER_PAGE_URL} element={<RegisterPage />} />
           <Route path={HIDDEN_ELEMENT_PAGE_URL} element={<HiddenElementPage />} />
           <Route path={VISIBLE_ELEMENT_PAGE_URL} element={<VisibleElementPage />} />
 

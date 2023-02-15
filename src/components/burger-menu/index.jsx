@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import { CLICK_NAMES } from 'constants/click-names';
 import {
   ABOUT_US_PAGE_URL,
+  REGISTER_PAGE_URL,
   CONTACT_US_PAGE_URL,
-  NEWSLETTERS_PAGE_URL,
+  // NEWSLETTERS_PAGE_URL,
   HIDDEN_ELEMENT_PAGE_URL
 } from 'constants/app-routes';
 
@@ -57,12 +58,19 @@ function BurgerMenu() {
             >
               <li className={itemClasses}>Contact Us</li>
             </Link>
-            <Link
+            {/* <Link
               onClick={toggleMenu}
               to={NEWSLETTERS_PAGE_URL}
               data-click={CLICK_NAMES.HIDDEN_HEADER_ITEM}
             >
               <li className={itemClasses}>Newsletters</li>
+            </Link> */}
+            <Link
+              onClick={toggleMenu}
+              to={REGISTER_PAGE_URL}
+              data-click={CLICK_NAMES.HIDDEN_HEADER_ITEM}
+            >
+              <li className={itemClasses}>Register</li>
             </Link>
           </ul>
         </div>

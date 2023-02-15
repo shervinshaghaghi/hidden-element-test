@@ -13,11 +13,22 @@ import { appSelectors } from 'store/app-data/app-selectors';
 function ThankYouPage() {
   titleGenerator('Thank You');
   const [showResult, setShowResult] = useState(false);
-  const { userAge, userJob, userEmail, clicks, userSex, isHiddenTest } = useSelector(
-    appSelectors.appData
-  );
+  const {
+    userAge,
+    userJob,
+    userEmail,
+    clicks,
+    userSex,
+    name,
+    username,
+    password,
+    isHiddenTest
+  } = useSelector(appSelectors.appData);
 
   const user = {
+    name,
+    username,
+    password,
     age: userAge,
     job: userJob,
     sex: userSex,
@@ -58,8 +69,10 @@ function ThankYouPage() {
         <div className="animate__animated overflow-hidden leading-9 text-sm px-5 w-full max-w-md mx-auto mt-8">
           <p className={titleClasses}>USER</p>
           <ul className="list-disc mb-4">
+            <li>{`User Name: ${result.user.name}`}</li>
             <li>{`User Age: ${result.user.age}`}</li>
             <li>{`User Sex: ${result.user.sex}`}</li>
+            <li>{`User Username: ${result.user.username}`}</li>
             <li>{`User Job: ${result.user.job ? result.user.job : 'None'}`}</li>
             <li>{`User Test Type: ${result.user.isHiddenTest}`}</li>
           </ul>
@@ -67,6 +80,7 @@ function ThankYouPage() {
           <p className={titleClasses}>TIME</p>
           <ul className="list-disc mb-4">
             <li>{`Time: ${result.time}`}</li>
+            <li>{`Register Time: ${result.registerTime}`}</li>
           </ul>
 
           <p className={titleClasses}>BUTTONS</p>

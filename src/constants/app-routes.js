@@ -1,6 +1,7 @@
 export const HOME_URL = '/';
 export const NOT_FOUNT_URL = '/404/';
 
+export const REGISTER_PAGE_URL = '/register/';
 export const ABOUT_US_PAGE_URL = '/about-us/';
 export const THANK_YOU_PAGE_URL = '/thank-you/';
 export const CONTACT_US_PAGE_URL = '/contact-us/';

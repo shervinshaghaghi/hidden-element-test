@@ -14,11 +14,11 @@ function SubmitOrderButton({
   hideCancelBtn = false
 }) {
   const navigate = useNavigate();
-  const { count, cart, userEmail } = useSelector(appSelectors.appData);
+  const { count, cart, username, password } = useSelector(appSelectors.appData);
 
   const onSubmit = () => {
-    if (!userEmail) {
-      toast.error('Please, join to our newsletters.');
+    if (!username || !password) {
+      toast.error('Please, register to our site.');
       return;
     }
     navigate(THANK_YOU_PAGE_URL);

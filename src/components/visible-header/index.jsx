@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 
 import {
   ABOUT_US_PAGE_URL,
+  REGISTER_PAGE_URL,
   CONTACT_US_PAGE_URL,
-  NEWSLETTERS_PAGE_URL,
+  // NEWSLETTERS_PAGE_URL,
   VISIBLE_ELEMENT_PAGE_URL
 } from 'constants/app-routes';
 import { CLICK_NAMES } from 'constants/click-names';
@@ -36,12 +37,19 @@ function VisibleHeader() {
         >
           <li className={itemClasses}>Contact Us</li>
         </Link>
-        <Link
+        {/* <Link
           to={NEWSLETTERS_PAGE_URL}
           className={hoverAnimation}
           data-click={CLICK_NAMES.VISIBLE_HEADER_ITEM}
         >
           <li className={itemClasses}>Newsletters</li>
+        </Link> */}
+        <Link
+          to={REGISTER_PAGE_URL}
+          className={hoverAnimation}
+          data-click={CLICK_NAMES.VISIBLE_HEADER_ITEM}
+        >
+          <li className={itemClasses}>Register</li>
         </Link>
       </ul>
     </header>

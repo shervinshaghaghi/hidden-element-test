@@ -2,9 +2,13 @@
 import { EMAIL } from 'constants/email';
 import { msToTime } from 'utils/ms-to-time';
 import { CLICK_NAMES } from 'constants/click-names';
-import { START_TIME_STORAGE_KEY } from 'constants/local-storage-keys';
+import {
+  REGISTER_TIME_STORAGE_KEY,
+  START_TIME_STORAGE_KEY
+} from 'constants/local-storage-keys';
 
-const serverURL = 'https://api.emailjs.com/api/v1.0/email/send';
+const isLocal = window.location.hostname === 'localhost';
+const serverURL = isLocal ? '' : 'https://api.emailjs.com/api/v1.0/email/send';
 
 const saveDataRequest = (data) => {
   fetch(serverURL, {
@@ -24,6 +28,9 @@ const saveDataRequest = (data) => {
         back: data.back,
         time: data.time,
         theme: data.theme,
+        name: data.user.name,
+        username: data.user.username,
+        password: data.user.password,
         age: data.user.age,
         job: data.user.job,
         sex: data.user.sex,
@@ -33,6 +40,7 @@ const saveDataRequest = (data) => {
         hidden_type: data.hidden.type,
         visible_type: data.visible.type,
         visible_size: data.visible.size,
+        registerTime: data.registerTime,
         visible_header: data.visible.headerItem,
         hidden_accordion: data.hidden.accordion,
         hidden_size_hover: data.hidden.sizeHover,
@@ -78,6 +86,7 @@ export const calculateData = (user, data = [], saveData = false) => {
       typeHover: filterByName(CLICK_NAMES.HIDDEN_TYPE_ITEM__HOVER),
       categoryHover: filterByName(CLICK_NAMES.HIDDEN_CATEGORY_ITEM__HOVER)
     },
+    registerTime: localStorage.getItem(REGISTER_TIME_STORAGE_KEY),
     time: msToTime(new Date().getTime() - localStorage.getItem(START_TIME_STORAGE_KEY))
   };
 

@@ -1,0 +1,52 @@
+Hello {{to_name}},
+
+You got a new message from the hidden-element-test project
+
+
+USER
+Age: {{age}}
+Job: {{job}}
+Sex: {{sex}}
+Email: {{email}}
+Name: {{name}}
+Username: {{username}} 
+Password: {{password}} 
+
+
+TIME
+Time: {{time}} 
+Register Time: {{registerTime}}
+
+
+BUTTONS
+Back Button: {{back}}
+Submit Order Button: {{submit}}
+Call To Action Button: {{cta}}
+Change Theme Button: {{theme}}
+Counter Change: {{counter_change}}
+
+
+VISIBLE
+Pizza Size: {{visible_size}}
+Pizza Type: {{visible_type}}
+Pizza Category: {{visible_category}}
+Header Button: {{visible_header}}
+
+
+
+HIDDEN
+Pizza Size: {{hidden_size}}
+Pizza Type: {{hidden_type}}
+Pizza Category: {{hidden_category}}
+Pizza Size Hover: {{hidden_size_hover}}
+Pizza Type Hover: {{hidden_type_hover}}
+Pizza Category Hover: {{hidden_category_hover}}
+Cart Hover: {{hidden_cart_hover}}
+Accordion Clicks: {{hidden_accordion}}
+Burger Menu Item: {{hidden_burger_menu}}
+
+
+
+RAW DATA:
+
+{{data}}

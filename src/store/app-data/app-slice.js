@@ -10,8 +10,11 @@ const initialState = {
   clicks: [],
   userAge: '',
   userJob: '',
+  name: '',
   userEmail: '',
   userSex: '',
+  username: '',
+  password: '',
   isHiddenTest: false,
   darkMode: !!localStorage.getItem(DARK_MODE_STORAGE_KEY)
 };
@@ -20,6 +23,11 @@ const appSlice = createSlice({
   name: REDUCER_NAMES.APP,
   initialState,
   reducers: {
+    registerAction: (state, action) => {
+      state.username = action.payload.username;
+      state.password = action.payload.password;
+      state.userEmail = action.payload.email;
+    },
     toggleDarkMode: (state, action) => {
       state.darkMode = action.payload;
     },
@@ -33,6 +41,7 @@ const appSlice = createSlice({
       state.userAge = action.payload.age;
       state.userJob = action.payload.job;
       state.userSex = action.payload.sex;
+      state.name = action.payload.name;
       state.isHiddenTest = action.payload.isHiddenTest;
     },
     setUserEmailAction: (state, action) => {
@@ -56,6 +65,9 @@ const appSlice = createSlice({
       state.cart = {};
       state._cart = {};
       state.count = 1;
+      state.name = '';
+      state.username = '';
+      state.password = '';
     },
     clickAction: (state, action) => {
       const currentClicks = state.clicks;
@@ -74,6 +86,7 @@ export const {
   resetAction,
   clickAction,
   changeCount,
+  registerAction,
   changeTestType,
   toggleDarkMode,
   removeCartItems,
