@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { toast } from 'react-hot-toast';
+import { Tooltip } from 'react-tooltip';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +13,10 @@ import { CheckPassword } from 'components/check-password';
 import { registerAction } from 'store/app-data/app-slice';
 import { appSelectors } from 'store/app-data/app-selectors';
 import { REGISTER_TIME_STORAGE_KEY } from 'constants/local-storage-keys';
+
+import INFO_IMAGE from 'assets/info.png';
+
+import 'react-tooltip/dist/react-tooltip.css';
 
 export function RegisterPage() {
   titleGenerator('Create Account');
@@ -133,9 +138,24 @@ export function RegisterPage() {
 
         <br />
 
-        <div className="w-full flex flex-col gap-y-2">
-          <div className="text-sm">
+        <div className="w-full flex flex-col gap-y-2 relative">
+          <div className="text-sm flex items-center">
             Email Address <span className="text-rose-500 ml-1">*</span>
+            {isHiddenTest && (
+              <div className="ml-1">
+                <img
+                  width={20}
+                  alt="INFO"
+                  src={INFO_IMAGE}
+                  id="info-tooltip-name"
+                  className="opacity-50"
+                />
+                <Tooltip
+                  anchorId="info-tooltip-name"
+                  content="Your email address must be have @ and valid email domain."
+                />
+              </div>
+            )}
           </div>
           <input
             required
@@ -160,9 +180,24 @@ export function RegisterPage() {
           )}
         </div>
 
-        <div className="w-full flex flex-col gap-y-2 my-4">
-          <div className="text-sm">
+        <div className="w-full flex flex-col gap-y-2 my-4 relative">
+          <div className="text-sm flex items-center">
             Name <span className="text-rose-500 ml-1">*</span>
+            {isHiddenTest && (
+              <div className="ml-1">
+                <img
+                  width={22}
+                  alt="INFO"
+                  src={INFO_IMAGE}
+                  id="info-tooltip-email"
+                  className="opacity-50"
+                />
+                <Tooltip
+                  anchorId="info-tooltip-email"
+                  content="Your name must be not empty."
+                />
+              </div>
+            )}
           </div>
           <input
             required
@@ -185,9 +220,32 @@ export function RegisterPage() {
           )}
         </div>
 
-        <div className="w-full flex flex-col gap-y-2">
-          <div className="text-sm">
+        <div className="w-full flex flex-col gap-y-2 relative">
+          <div className="flex items-center text-sm">
             Password <span className="text-rose-500 ml-1">*</span>
+            {isHiddenTest && (
+              <div className="ml-1">
+                <img
+                  width={22}
+                  alt="INFO"
+                  src={INFO_IMAGE}
+                  id="info-tooltip-pass"
+                  className="opacity-50"
+                />
+                <Tooltip
+                  anchorId="info-tooltip-pass"
+                  content={
+                    <ul>
+                      <li>Must have at least 10 characters</li>
+                      <li>Must contain at least one number</li>
+                      <li>Must have at least one uppercase character</li>
+                      <li>Must have at least one lowercase character</li>
+                      <li>Must have at least one special character (symbol).</li>
+                    </ul>
+                  }
+                />
+              </div>
+            )}
           </div>
           <input
             required
