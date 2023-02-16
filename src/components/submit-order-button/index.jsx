@@ -18,7 +18,7 @@ function SubmitOrderButton({
 
   const onSubmit = () => {
     if (!username || !password) {
-      toast.error('Please, register to our site.');
+      toast.error('Please, Create an account.');
       return;
     }
     navigate(THANK_YOU_PAGE_URL);

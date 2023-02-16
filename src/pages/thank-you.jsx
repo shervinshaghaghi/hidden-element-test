@@ -80,7 +80,7 @@ function ThankYouPage() {
           <p className={titleClasses}>TIME</p>
           <ul className="list-disc mb-4">
             <li>{`Time: ${result.time}`}</li>
-            <li>{`Register Time: ${result.registerTime}`}</li>
+            <li>{`Create Account Time: ${result.registerTime}`}</li>
           </ul>
 
           <p className={titleClasses}>BUTTONS</p>

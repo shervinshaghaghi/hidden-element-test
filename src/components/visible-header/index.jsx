@@ -49,7 +49,7 @@ function VisibleHeader() {
           className={hoverAnimation}
           data-click={CLICK_NAMES.VISIBLE_HEADER_ITEM}
         >
-          <li className={itemClasses}>Register</li>
+          <li className={itemClasses}>Create Account</li>
         </Link>
       </ul>
     </header>

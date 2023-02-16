@@ -25,9 +25,9 @@ function HomePage() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({
     name: '',
-    age: '18 - 24',
+    age: 'Prefer not to answer',
     job: 'Prefer not to answer',
-    sex: 'Male'
+    sex: 'Prefer not to answer'
   });
 
   useEffect(() => {
@@ -40,11 +40,11 @@ function HomePage() {
 
   const onStart = (testName) => () => {
     const testIsHiddenType = testName === TESTS.HIDDEN_ELEMENT;
-    if (userData.age === '') {
+    if (userData.age === '' || userData.age === 'Prefer not to answer') {
       toast.error('Please, Enter your current age.');
       return;
     }
-    if (userData.sex === '') {
+    if (userData.sex === '' || userData.sex === 'Prefer not to answer') {
       toast.error('Please, Select your gender.');
       return;
     }
@@ -76,12 +76,12 @@ function HomePage() {
       <div className="animate__animated shadow-md animate__fadeIn flex flex-col w-full text-sm bg-slate-100 dark:bg-slate-600 p-4 rounded-lg">
         <h3 className="mb-2 font-bold text-md">Your Tasks:</h3>
         <ul className="flex flex-col gap-y-2 w-full">
-          <li>1 - Create An Account.</li>
-          <li>2 - Order Your Favorite Pizza.</li>
+          <li>1 - Create an account.</li>
+          <li>2 - Order your favorite pizza.</li>
         </ul>
       </div>
 
-      <div className="w-full flex flex-col gap-y-2">
+      {/* <div className="w-full flex flex-col gap-y-2">
         <div className="text-sm">What's Your Name? (optional)</div>
         <input
           name="name"
@@ -90,7 +90,7 @@ function HomePage() {
           placeholder="Enter Your Name"
           className={classNames('bg-transparent h-11', classes.input)}
         />
-      </div>
+      </div> */}
 
       <div className="w-full flex flex-col gap-y-2">
         <div className="text-sm">
@@ -102,12 +102,10 @@ function HomePage() {
           onChange={onChanges}
           className={classNames('bg-transparent h-11', classes.input)}
         >
-          <option value="Male" selected>
-            Male
-          </option>
+          <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Non-Binary">Non-Binary</option>
-          <option value="Prefer not to answer">Prefer not to answer</option>
+          <option value="Prefer not to answer" selected>Prefer not to answer</option>
         </select>
       </div>
 
@@ -121,21 +119,19 @@ function HomePage() {
           onChange={onChanges}
           className={classNames('bg-transparent h-11', classes.input)}
         >
-          <option value="18 - 24" selected>
-            18 - 24 years old
-          </option>
+          <option value="18 - 24">18 - 24 years old</option>
           <option value="25 - 34">25 - 34 years old</option>
           <option value="35 - 44">35 - 44 years old</option>
           <option value="45 - 54">45 - 54 years old</option>
           <option value="55 - 64">55 - 64 years old</option>
           <option value="65+">65+ years old</option>
-          <option value="Prefer not to answer">Prefer not to answer</option>
+          <option value="Prefer not to answer" selected>Prefer not to answer</option>
         </select>
       </div>
 
       <div className="w-full flex flex-col gap-y-2 mb-2">
         <span className="text-sm">
-          What is the highest dgree or school level you have compleeted (optional)
+          What is the highest dgree or school level you have completed (optional)
         </span>
         <select
           name="job"

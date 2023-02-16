@@ -15,7 +15,7 @@ Password: {{password}} 
 
 TIME
 Time: {{time}} 
-Register Time: {{registerTime}}
+Create Account Time: {{registerTime}}
 
 
 BUTTONS

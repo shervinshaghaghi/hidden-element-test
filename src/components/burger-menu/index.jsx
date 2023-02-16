@@ -70,7 +70,7 @@ function BurgerMenu() {
               to={REGISTER_PAGE_URL}
               data-click={CLICK_NAMES.HIDDEN_HEADER_ITEM}
             >
-              <li className={itemClasses}>Register</li>
+              <li className={itemClasses}>Create Account</li>
             </Link>
           </ul>
         </div>

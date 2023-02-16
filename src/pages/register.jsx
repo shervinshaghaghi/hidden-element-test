@@ -14,14 +14,14 @@ import { appSelectors } from 'store/app-data/app-selectors';
 import { REGISTER_TIME_STORAGE_KEY } from 'constants/local-storage-keys';
 
 export function RegisterPage() {
-  titleGenerator('Register');
+  titleGenerator('Create Account');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [registerTime, setRegisterTime] = useState(0);
   const [passwordIsValid, setPasswordIsValid] = useState(false);
-  const { username, password } = useSelector(appSelectors.appData);
+  const { name, password } = useSelector(appSelectors.appData);
   const [userData, setUserData] = useState({
-    username: '',
+    name: '',
     password: '',
     email: ''
   });
@@ -42,17 +42,27 @@ export function RegisterPage() {
     }
   };
 
+  const onSuccess = (id) => () => {
+    toast.dismiss(id);
+    setUserData({
+      name: '',
+      password: '',
+      email: ''
+    });
+    navigate(-1);
+  };
+
   const register = () => {
     if (!passwordIsValid) {
       toast.error('Your Password Is Not Strong.');
       return;
     }
-    if (!userData.username) {
-      toast.error('Please, Enter Your Username.');
+    if (!userData.name) {
+      toast.error('Please, Enter Your Valid Name.');
       return;
     }
     if (!userData.email) {
-      toast.error('Please, Enter Your Email Address.');
+      toast.error('Please, Enter Your Valid Email Address.');
       return;
     }
 
@@ -60,8 +70,21 @@ export function RegisterPage() {
     localStorage.setItem(REGISTER_TIME_STORAGE_KEY, time);
 
     dispatch(registerAction(userData));
-    toast.success('Your registration was successful.');
-    navigate(-1);
+    toast(
+      (t) => (
+        <div className="flex flex-col items-center p-6">
+          <div>Your Registration Was Successful.</div>
+          <button
+            type="button"
+            className="font-bold bg-green-500 mt-4 px-5 rounded-md py-2 text-slate-50"
+            onClick={onSuccess(t.id)}
+          >
+            OK
+          </button>
+        </div>
+      ),
+      { duration: 10000, position: 'top-center' }
+    );
   };
 
   const classes = {
@@ -73,16 +96,16 @@ export function RegisterPage() {
     })
   };
 
-  if (username.length && password.length) {
+  if (name.length && password.length) {
     return (
       <div className="w-full px-5">
         <div className="animate__animated animate__fadeIn flex shadow-lg flex-col bg-slate-100 dark:bg-slate-700 p-5 rounded-lg max-w-lg mx-auto mt-10">
           <h3 className="mb-2 text-2xl font-bold text-rose-500">
-            Register - You Are Already Registered
+            Create Account - You Are Already Registered
           </h3>
           <br />
           <p>
-            You have already done this step. <br /> You can order your pizza now
+            You have already done this step. <br /> You can order your pizza now!
           </p>
           <br />
           <BackButton />
@@ -94,28 +117,17 @@ export function RegisterPage() {
   return (
     <div className="w-full px-5">
       <div className="animate__animated animate__fadeIn flex shadow-lg flex-col bg-slate-100 dark:bg-slate-700 p-5 rounded-lg max-w-lg mx-auto mt-10">
-        <h3 className="mb-2 text-2xl font-bold text-rose-500">Register</h3>
-        <p>For ordering your pizza you should be registered.</p>
+        <h3 className="mb-2 text-2xl font-bold text-rose-500">Create Account</h3>
+        <p>For ordering your pizza you should be have an account.</p>
 
         <br />
-        <div className="w-full flex flex-col gap-y-2">
-          <div className="text-sm">
-            Username <span className="text-rose-500 ml-1">*</span>
-          </div>
-          <input
-            name="username"
-            onChange={onChanges}
-            value={userData.username}
-            placeholder="Enter Your Username"
-            className={classNames('bg-transparent h-11', classes.input)}
-          />
-        </div>
 
-        <div className="w-full flex flex-col gap-y-2 mt-4">
+        <div className="w-full flex flex-col gap-y-2">
           <div className="text-sm">
             Email Address <span className="text-rose-500 ml-1">*</span>
           </div>
           <input
+            required
             type="email"
             name="email"
             onChange={onChanges}
@@ -125,11 +137,26 @@ export function RegisterPage() {
           />
         </div>
 
-        <div className="w-full flex flex-col gap-y-2 mt-4">
+        <div className="w-full flex flex-col gap-y-2 my-4">
+          <div className="text-sm">
+            Name <span className="text-rose-500 ml-1">*</span>
+          </div>
+          <input
+            required
+            name="name"
+            onChange={onChanges}
+            value={userData.name}
+            placeholder="Enter Your Name"
+            className={classNames('bg-transparent h-11', classes.input)}
+          />
+        </div>
+
+        <div className="w-full flex flex-col gap-y-2">
           <div className="text-sm">
             Password <span className="text-rose-500 ml-1">*</span>
           </div>
           <input
+            required
             type="password"
             name="password"
             autoComplete="off"
@@ -149,7 +176,7 @@ export function RegisterPage() {
           disabled={!passwordIsValid}
           data-click={CLICK_NAMES.CTA_BTN}
         >
-          Register
+          Create Account
         </button>
         <br />
         <BackButton />
