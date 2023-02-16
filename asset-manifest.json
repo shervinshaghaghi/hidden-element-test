@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/hidden-element-test/static/css/main.400bbc28.css",
-    "main.js": "/hidden-element-test/static/js/main.320467c1.js",
+    "main.css": "/hidden-element-test/static/css/main.3e03a2bf.css",
+    "main.js": "/hidden-element-test/static/js/main.8e88cec0.js",
     "static/js/787.2a620769.chunk.js": "/hidden-element-test/static/js/787.2a620769.chunk.js",
     "static/media/pizza.png": "/hidden-element-test/static/media/pizza.ec1d14f22bb1abeb836f.png",
     "index.html": "/hidden-element-test/index.html",
     "static/media/sun.svg": "/hidden-element-test/static/media/sun.c394a6d670a30f74bf929a528c839172.svg",
     "static/media/moon.svg": "/hidden-element-test/static/media/moon.ae7ccf1d0a048a5bfdc55bee2d7155cc.svg",
-    "main.400bbc28.css.map": "/hidden-element-test/static/css/main.400bbc28.css.map",
-    "main.320467c1.js.map": "/hidden-element-test/static/js/main.320467c1.js.map",
+    "main.3e03a2bf.css.map": "/hidden-element-test/static/css/main.3e03a2bf.css.map",
+    "main.8e88cec0.js.map": "/hidden-element-test/static/js/main.8e88cec0.js.map",
     "787.2a620769.chunk.js.map": "/hidden-element-test/static/js/787.2a620769.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.400bbc28.css",
-    "static/js/main.320467c1.js"
+    "static/css/main.3e03a2bf.css",
+    "static/js/main.8e88cec0.js"
   ]
 }
