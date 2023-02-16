@@ -40,14 +40,6 @@ function HomePage() {
 
   const onStart = (testName) => () => {
     const testIsHiddenType = testName === TESTS.HIDDEN_ELEMENT;
-    if (userData.sex === '' || userData.sex === 'Prefer not to answer') {
-      toast.error('Please, Select your gender.');
-      return;
-    }
-    if (userData.age === '' || userData.age === 'Prefer not to answer') {
-      toast.error('Please, Enter your current age.');
-      return;
-    }
     if (testName === TESTS.HIDDEN_ELEMENT) {
       navigate(HIDDEN_ELEMENT_PAGE_URL);
     }
