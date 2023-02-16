@@ -13,7 +13,6 @@ const initialState = {
   name: '',
   userEmail: '',
   userSex: '',
-  username: '',
   password: '',
   isHiddenTest: false,
   darkMode: !!localStorage.getItem(DARK_MODE_STORAGE_KEY)
@@ -24,7 +23,7 @@ const appSlice = createSlice({
   initialState,
   reducers: {
     registerAction: (state, action) => {
-      state.username = action.payload.username;
+      state.name = action.payload.name;
       state.password = action.payload.password;
       state.userEmail = action.payload.email;
     },
@@ -66,7 +65,6 @@ const appSlice = createSlice({
       state._cart = {};
       state.count = 1;
       state.name = '';
-      state.username = '';
       state.password = '';
     },
     clickAction: (state, action) => {

@@ -29,7 +29,6 @@ const saveDataRequest = (data) => {
         time: data.time,
         theme: data.theme,
         name: data.user.name,
-        username: data.user.username,
         password: data.user.password,
         age: data.user.age,
         job: data.user.job,

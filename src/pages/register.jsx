@@ -19,7 +19,7 @@ export function RegisterPage() {
   const navigate = useNavigate();
   const [registerTime, setRegisterTime] = useState(0);
   const [passwordIsValid, setPasswordIsValid] = useState(false);
-  const { name, password } = useSelector(appSelectors.appData);
+  const { name, password, isHiddenTest } = useSelector(appSelectors.appData);
   const [userData, setUserData] = useState({
     name: '',
     password: '',
@@ -52,17 +52,26 @@ export function RegisterPage() {
     navigate(-1);
   };
 
-  const register = () => {
-    if (!passwordIsValid) {
-      toast.error('Your Password Is Not Strong.');
+  const emailValidation = (email = '') => {
+    // eslint-disable-next-line no-useless-escape
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      return true;
+    }
+    return false;
+  };
+
+  const register = (e) => {
+    e.preventDefault();
+    if (!emailValidation(userData.email)) {
+      toast.error('Please, Enter Your Valid Email Address.');
       return;
     }
     if (!userData.name) {
-      toast.error('Please, Enter Your Valid Name.');
+      toast.error('Please, Enter Your Name.');
       return;
     }
-    if (!userData.email) {
-      toast.error('Please, Enter Your Valid Email Address.');
+    if (!passwordIsValid) {
+      toast.error('Your Password Is Not Strong.');
       return;
     }
 
@@ -91,8 +100,10 @@ export function RegisterPage() {
     input:
       'px-4 bg-transparent duration-300 rounded-lg leading-10 outline-none border-2 border-solid focus:border-amber-500',
     button: classNames('w-full mt-6 duration-300 rounded-lg py-1 leading-9', {
-      'bg-slate-300 text-slate-400': !passwordIsValid,
-      'text-slate-50 bg-rose-700 hover:bg-rose-600': passwordIsValid
+      'bg-slate-300 text-slate-400':
+        !passwordIsValid || !emailValidation(userData.email) || !userData.name.length,
+      'text-slate-50 bg-rose-700 hover:bg-rose-600':
+        passwordIsValid && userData.name.length && emailValidation(userData.email)
     })
   };
 
@@ -132,9 +143,21 @@ export function RegisterPage() {
             name="email"
             onChange={onChanges}
             value={userData.email}
+            autoComplete="off"
             placeholder="Enter Your Email Address"
             className={classNames('w-full', classes.input)}
           />
+
+          {!isHiddenTest && (
+            <p
+              className={classNames('text-xs', {
+                'text-slate-500': !emailValidation(userData.email),
+                'text-green-500': emailValidation(userData.email)
+              })}
+            >
+              Your email address must be have @ and valid email domain.
+            </p>
+          )}
         </div>
 
         <div className="w-full flex flex-col gap-y-2 my-4">
@@ -149,6 +172,17 @@ export function RegisterPage() {
             placeholder="Enter Your Name"
             className={classNames('bg-transparent h-11', classes.input)}
           />
+
+          {!isHiddenTest && (
+            <p
+              className={classNames('text-xs', {
+                'text-slate-500': !userData.name.length,
+                'text-green-500': userData.name.length
+              })}
+            >
+              Your name must be not empty.
+            </p>
+          )}
         </div>
 
         <div className="w-full flex flex-col gap-y-2">
@@ -170,10 +204,12 @@ export function RegisterPage() {
         </div>
 
         <button
-          type="button"
+          type="submit"
           onClick={register}
           className={classes.button}
-          disabled={!passwordIsValid}
+          disabled={
+            !passwordIsValid || !emailValidation(userData.email) || !userData.name.length
+          }
           data-click={CLICK_NAMES.CTA_BTN}
         >
           Create Account

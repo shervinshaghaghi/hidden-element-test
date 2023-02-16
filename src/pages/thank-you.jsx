@@ -13,21 +13,11 @@ import { appSelectors } from 'store/app-data/app-selectors';
 function ThankYouPage() {
   titleGenerator('Thank You');
   const [showResult, setShowResult] = useState(false);
-  const {
-    userAge,
-    userJob,
-    userEmail,
-    clicks,
-    userSex,
-    name,
-    username,
-    password,
-    isHiddenTest
-  } = useSelector(appSelectors.appData);
+  const { userAge, userJob, userEmail, clicks, userSex, name, password, isHiddenTest } =
+    useSelector(appSelectors.appData);
 
   const user = {
     name,
-    username,
     password,
     age: userAge,
     job: userJob,
@@ -72,7 +62,6 @@ function ThankYouPage() {
             <li>{`User Name: ${result.user.name}`}</li>
             <li>{`User Age: ${result.user.age}`}</li>
             <li>{`User Sex: ${result.user.sex}`}</li>
-            <li>{`User Username: ${result.user.username}`}</li>
             <li>{`User Job: ${result.user.job ? result.user.job : 'None'}`}</li>
             <li>{`User Test Type: ${result.user.isHiddenTest}`}</li>
           </ul>

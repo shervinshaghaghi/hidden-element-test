@@ -9,7 +9,6 @@ Job: {{job}}
 Sex: {{sex}}
 Email: {{email}}
 Name: {{name}}
-Username: {{username}} 
 Password: {{password}} 
 
 

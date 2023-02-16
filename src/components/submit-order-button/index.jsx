@@ -14,10 +14,10 @@ function SubmitOrderButton({
   hideCancelBtn = false
 }) {
   const navigate = useNavigate();
-  const { count, cart, username, password } = useSelector(appSelectors.appData);
+  const { count, cart, name, password } = useSelector(appSelectors.appData);
 
   const onSubmit = () => {
-    if (!username || !password) {
+    if (!name || !password) {
       toast.error('Please, Create an account.');
       return;
     }
