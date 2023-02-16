@@ -105,7 +105,9 @@ function HomePage() {
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Non-Binary">Non-Binary</option>
-          <option value="Prefer not to answer" selected>Prefer not to answer</option>
+          <option value="Prefer not to answer" selected>
+            Prefer not to answer
+          </option>
         </select>
       </div>
 
@@ -125,7 +127,9 @@ function HomePage() {
           <option value="45 - 54">45 - 54 years old</option>
           <option value="55 - 64">55 - 64 years old</option>
           <option value="65+">65+ years old</option>
-          <option value="Prefer not to answer" selected>Prefer not to answer</option>
+          <option value="Prefer not to answer" selected>
+            Prefer not to answer
+          </option>
         </select>
       </div>
 

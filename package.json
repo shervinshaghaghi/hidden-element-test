@@ -31,7 +31,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "eslint-fix": "eslint --fix src/**/*.js",
-    "prettier-fix": "prettier --write src/**/*.js",
+    "prettier-fix": "prettier --write src/**/*.jsx",
     "styles:build": "npx tailwindcss -i ./src/styles/index.scss -o ./src/styles/index.min.css --minify",
     "styles": "npx tailwindcss -i ./src/styles/index.scss -o ./src/styles/index.min.css --watch --minify"
   },
