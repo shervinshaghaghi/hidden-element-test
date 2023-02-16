@@ -78,13 +78,14 @@ function VisiblePizzaSize({ isVisible = true }) {
         >
           {Object.values(SIZES).map((item) => (
             <label
+              key={item.id}
               onMouseEnter={checkHover}
               htmlFor={item.title}
               data-click={
                 isVisible ? CLICK_NAMES.VISIBLE_SIZE_ITEM : CLICK_NAMES.HIDDEN_SIZE_ITEM
               }
               className={classNames(
-                'animate__animated animate__fadeIn cursor-pointer border-2 border-transparent border-solid p-4 flex flex-col items-center justify-center rounded-lg dark:bg-slate-600 bg-slate-100 shadow-md',
+                'animate__animated animate__fadeIn cursor-pointer border-2  border-solid p-4 flex flex-col items-center justify-center rounded-lg dark:bg-slate-600 bg-slate-100 shadow-md',
                 {
                   [styles.PizzaSize__item]: !isVisible,
                   'border-green-500': selectedValue === item.id

@@ -85,6 +85,7 @@ function VisiblePizzaCategory({ isVisible = true }) {
             .splice(0, showAllCategory || isVisible ? categoreisArray.length : 2)
             .map((item) => (
               <label
+                key={item.id}
                 onMouseEnter={checkHover}
                 htmlFor={item.title}
                 data-click={
@@ -94,7 +95,7 @@ function VisiblePizzaCategory({ isVisible = true }) {
                 }
                 style={{ height: 230 }}
                 className={classNames(
-                  'animate__animated animate__fadeIn cursor-pointer overflow-hidden border-2 border-transparent border-solid p-4 flex flex-col items-center justify-center rounded-lg dark:bg-slate-600 bg-slate-100 shadow-md',
+                  'animate__animated animate__fadeIn cursor-pointer overflow-hidden border-2  border-solid p-4 flex flex-col items-center justify-center rounded-lg dark:bg-slate-600 bg-slate-100 shadow-md',
                   {
                     [styles.PizzaCategory__item]: !isVisible,
                     'border-green-500': selectedValue === item.id
@@ -125,7 +126,7 @@ function VisiblePizzaCategory({ isVisible = true }) {
             <button
               onClick={() => setShowAllCategory(true)}
               className={classNames(
-                'animate__animated animate__fadeIn cursor-pointer border-2 border-transparent border-solid py-4 px-6 flex flex-col items-center justify-center rounded-lg dark:bg-slate-600 bg-slate-100 shadow-md',
+                'animate__animated animate__fadeIn cursor-pointer border-2  border-solid py-4 px-6 flex flex-col items-center justify-center rounded-lg dark:bg-slate-600 bg-slate-100 shadow-md',
                 {
                   [styles.PizzaCategory__item]: !isVisible
                 }

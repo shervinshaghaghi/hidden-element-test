@@ -75,13 +75,14 @@ function VisiblePizzaType({ isVisible = true }) {
         <div className="w-full flex-wrap flex items-center justify-center gap-4">
           {Object.values(TYPES).map((item) => (
             <label
+              key={item.id}
               onMouseEnter={checkHover}
               htmlFor={item.title}
               data-click={
                 isVisible ? CLICK_NAMES.VISIBLE_TYPE_ITEM : CLICK_NAMES.HIDDEN_TYPE_ITEM
               }
               className={classNames(
-                'animate__animated animate__fadeIn w-full cursor-pointer border-2 border-transparent border-solid p-4 flex flex-col rounded-lg dark:bg-slate-600 bg-slate-100 shadow-md',
+                'animate__animated animate__fadeIn w-full cursor-pointer border-2  border-solid p-4 flex flex-col rounded-lg dark:bg-slate-600 bg-slate-100 shadow-md',
                 {
                   [styles.PizzaType__item]: !isVisible,
                   'border-green-500': selectedValue === item.id
