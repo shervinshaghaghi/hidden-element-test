@@ -86,8 +86,8 @@ function HomePage() {
 
       <div className="w-full flex flex-col gap-y-2">
         <div className="text-sm">
-          To which gender identity do you most identify?
-          <span className="text-rose-500 ml-1">*</span>
+          To which gender identity do you most identify? (optional)
+          {/* <span className="text-rose-500 ml-1">*</span> */}
         </div>
         <select
           name="sex"
@@ -105,8 +105,8 @@ function HomePage() {
 
       <div className="w-full flex flex-col gap-y-2">
         <div className="text-sm">
-          What is your age?
-          <span className="text-rose-500 ml-1">*</span>
+          What is your age? (optional)
+          {/* <span className="text-rose-500 ml-1">*</span> */}
         </div>
         <select
           name="age"
