@@ -114,10 +114,10 @@ export const Cart = ({ isVisible = true }) => {
         )}
       >
         {showItem && (
-          <div className="bg-rose-500 rounded-full p-1 animate-ping absolute" />
+          <div className="bg-rose-500 rounded-full p-2 animate-ping absolute" />
         )}
         <img
-          width={40}
+          width={48}
           alt="CART"
           src={CART_IMAGE}
           className={classNames({
@@ -125,7 +125,7 @@ export const Cart = ({ isVisible = true }) => {
           })}
         />
       </button>
-      <div className="hidden z-10 bg-slate-50 dark:bg-slate-600 shadow-md select-none p-4 rounded-md border border-solid absolute right-5 top-10 mr-8">
+      <div className="hidden z-50 bg-slate-50 dark:bg-slate-600 shadow-md select-none p-4 rounded-md border border-solid absolute right-5 top-10 mr-8">
         {showItem ? (
           <CartContent />
         ) : (

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import classNames from 'classnames';
 import { toast } from 'react-hot-toast';
 import { Tooltip } from 'react-tooltip';
@@ -15,6 +16,7 @@ import { appSelectors } from 'store/app-data/app-selectors';
 import { REGISTER_TIME_STORAGE_KEY } from 'constants/local-storage-keys';
 
 import INFO_IMAGE from 'assets/info.png';
+import SUCCESS_IMAGE from 'assets/success.png';
 
 import 'react-tooltip/dist/react-tooltip.css';
 
@@ -86,8 +88,12 @@ export function RegisterPage() {
     dispatch(registerAction(userData));
     toast(
       (t) => (
-        <div className="flex flex-col items-center p-6">
-          <div>Your Registration Was Successful.</div>
+        <div className="flex flex-col items-center py-3">
+          <img alt="" src={SUCCESS_IMAGE} width={48} />
+          <div className="font-bold mt-4">Your Registration Was Successful.</div>
+          <div className="mt-2 text-sm text-center text-yellow-600">
+            Now, you can submit the order in the shopping cart.
+          </div>
           <button
             type="button"
             className="font-bold bg-green-500 mt-4 px-5 rounded-md py-2 text-slate-50"
@@ -134,8 +140,11 @@ export function RegisterPage() {
     <div className="w-full px-5">
       <div className="animate__animated animate__fadeIn flex shadow-lg flex-col bg-slate-100 dark:bg-slate-700 p-5 rounded-lg max-w-lg mx-auto mt-10">
         <h3 className="mb-2 text-2xl font-bold text-rose-500">Create Account</h3>
-        <p>For ordering your pizza you should be have an account.</p>
-
+        <p>For ordering your pizza, you should create an account.</p>
+        <p className="mt-4 text-sm text-yellow-600">
+          The blanks must be filled currectly in order to the create account button to
+          turn on.
+        </p>
         <br />
 
         <div className="w-full flex flex-col gap-y-2 relative">
@@ -144,11 +153,11 @@ export function RegisterPage() {
             {isHiddenTest && (
               <div className="ml-1">
                 <img
-                  width={20}
+                  width={26}
                   alt="INFO"
                   src={INFO_IMAGE}
                   id="info-tooltip-name"
-                  className="opacity-50"
+                  className="opacity-90"
                 />
                 <Tooltip
                   anchorId="info-tooltip-name"
@@ -186,11 +195,11 @@ export function RegisterPage() {
             {isHiddenTest && (
               <div className="ml-1">
                 <img
-                  width={22}
+                  width={26}
                   alt="INFO"
                   src={INFO_IMAGE}
                   id="info-tooltip-email"
-                  className="opacity-50"
+                  className="opacity-90"
                 />
                 <Tooltip
                   anchorId="info-tooltip-email"
@@ -222,30 +231,38 @@ export function RegisterPage() {
 
         <div className="w-full flex flex-col gap-y-2 relative">
           <div className="flex items-center text-sm">
-            Password <span className="text-rose-500 ml-1">*</span>
-            {isHiddenTest && (
-              <div className="ml-1">
-                <img
-                  width={22}
-                  alt="INFO"
-                  src={INFO_IMAGE}
-                  id="info-tooltip-pass"
-                  className="opacity-50"
-                />
-                <Tooltip
-                  anchorId="info-tooltip-pass"
-                  content={
-                    <ul>
-                      <li>Must have at least 10 characters</li>
-                      <li>Must contain at least one number</li>
-                      <li>Must have at least one uppercase character</li>
-                      <li>Must have at least one lowercase character</li>
-                      <li>Must have at least one special character (symbol).</li>
-                    </ul>
-                  }
-                />
+            <div className="flex flex-col">
+              <div className="flex items-center">
+                <label>Password</label>
+                <span className="text-rose-500 ml-1">*</span>
+                {isHiddenTest && (
+                  <div className="ml-1">
+                    <img
+                      width={26}
+                      alt="INFO"
+                      src={INFO_IMAGE}
+                      id="info-tooltip-pass"
+                      className="opacity-90"
+                    />
+                    <Tooltip
+                      anchorId="info-tooltip-pass"
+                      content={
+                        <ul className="text-sm leading-6">
+                          <li>Must have at least 10 characters</li>
+                          <li>Must contain at least one number</li>
+                          <li>Must have at least one uppercase character</li>
+                          <li>Must have at least one lowercase character</li>
+                          <li>Must have at least one special character (symbol).</li>
+                        </ul>
+                      }
+                    />
+                  </div>
+                )}
               </div>
-            )}
+              <label className="mt-1 mb-1 text-xs text-yellow-600">
+                Please set a strong password.
+              </label>
+            </div>
           </div>
           <input
             required
@@ -275,6 +292,10 @@ export function RegisterPage() {
         <br />
         <BackButton />
       </div>
+
+      <br />
+      <br />
+      <br />
     </div>
   );
 }

@@ -12,10 +12,10 @@ import { CLICK_NAMES } from 'constants/click-names';
 function VisibleHeader() {
   const hoverAnimation =
     'duration-300 hover:bg-slate-200 hover:dark:bg-slate-600 border-b-2 border-solid border-transparent hover:dark:border-slate-50 hover:border-slate-700';
-  const itemClasses = 'leading-10 text-sm pointer-events-none duration-300 py-2 px-4';
+  const itemClasses = 'leading-10 text-md pointer-events-none duration-300 py-4 px-6';
   return (
     <header className="w-full shadow-md bg-slate-100 dark:bg-slate-700 px-5 mb-4">
-      <ul className="flex items-center justify-center w-full mx-auto">
+      <ul className="flex items-center justify-center w-full mx-auto flex-wrap">
         <Link
           className={hoverAnimation}
           to={VISIBLE_ELEMENT_PAGE_URL}

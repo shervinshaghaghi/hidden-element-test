@@ -79,7 +79,7 @@ function VisiblePizzaCategory({ isVisible = true }) {
       {show && (
         <div
           style={{ minHeight: 120 }}
-          className="w-full grid grid-cols-3 justify-center gap-4"
+          className="w-full grid grid-cols-2 lg:grid-cols-3 justify-center gap-4"
         >
           {categoreisArray
             .splice(0, showAllCategory || isVisible ? categoreisArray.length : 2)
@@ -107,7 +107,7 @@ function VisiblePizzaCategory({ isVisible = true }) {
                   Price: {item.price}$
                 </h3>
                 {item.description && (
-                  <p className="pointer-events-none text-sm mt-3 text-justify leading-6">
+                  <p className="pointer-events-none text-sm mt-3 leading-6">
                     {item.description}
                   </p>
                 )}

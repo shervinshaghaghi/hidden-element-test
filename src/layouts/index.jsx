@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { DarkModeButton } from 'components/dark-mode-button';
 
 function AppLayout({ children }) {
